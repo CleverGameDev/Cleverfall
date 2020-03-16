@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
-    private List<InputCollection> inputs;
+    private List<InputCollection> inputs = new List<InputCollection>();
+
+    public int totalPlayerNumber;
 
     void Start() {
-        inputs.Add(new InputCollection());
+        inputs = new List<InputCollection>();
+        for (int i = 0; i < this.totalPlayerNumber; i++) {
+            inputs.Add(new InputCollection());
+        }
     }
 
-    void Update()
+    void FixedUpdate()
     {
         this.updateInputs();
     }
@@ -20,7 +25,7 @@ public class InputManager : MonoBehaviour
     }
 
     public InputCollection GetPlayerInput(int playerCount) {
-        return inputs[playerCount];
+        return this.inputs[playerCount];
     }
 }
 
@@ -29,9 +34,25 @@ public class InputCollection {
     bool jump;
     bool attack;
 
+    public InputCollection() {
+        
+    }
+
     public void UpdateInputs(float horizontal, bool jump, bool attack) {
         this.horizontal = horizontal;
         this.jump = jump;
         this.attack = attack;
+    }
+
+    public float GetHorizontal() {
+        return this.horizontal;
+    }
+
+    public bool GetJump() {
+        return this.jump;
+    }
+
+    public bool GetAttack() {
+        return this.attack;
     }
 }
