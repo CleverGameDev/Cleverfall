@@ -8,6 +8,7 @@ public class PlayerBase : MonoBehaviour
 
     private int playerNum;
     private Rigidbody2D rb;
+    private bool grounded;
 
     public float horizontalMovementModifier = 0.25f;
     public float jumpVelocity = 5.0f;
@@ -19,6 +20,7 @@ public class PlayerBase : MonoBehaviour
     {
         this.playerNum = 0;
         this.rb = this.GetComponent<Rigidbody2D>();
+        this.grounded = false;
     }
 
     // Update is called once per frame
@@ -38,8 +40,9 @@ public class PlayerBase : MonoBehaviour
         );
 
         // Handle jumping
-        if (ic.GetJump()) {
+        if (ic.GetJump() && this.grounded) {
             rb.velocity = Vector2.up * jumpVelocity;
+            this.grounded = false;
         }
         if (rb.velocity.y < 0) {
             rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
@@ -50,5 +53,13 @@ public class PlayerBase : MonoBehaviour
 
     public void Die() {
         Destroy(this);
+    }
+
+    private void OnCollisionEnter2D(Collision2D other) {
+        // TODO: more consistent raycast logic needed
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.6f);
+        if (hit.collider != null && hit.collider.tag == "Ground") {
+            this.grounded = true;
+        }
     }
 }
