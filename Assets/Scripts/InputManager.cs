@@ -15,13 +15,13 @@ public class InputManager : MonoBehaviour
         }
     }
 
-    void FixedUpdate()
+    void Update()
     {
         this.updateInputs();
     }
 
     private void updateInputs() {
-        inputs[0].UpdateInputs(Input.GetAxis("Horizontal"), Input.GetButton("Jump"), Input.GetButton("Fire1"));
+        inputs[0].UpdateInputs(Input.GetAxis("Horizontal"), Input.GetButtonDown("Jump"), Input.GetButton("Jump"), Input.GetButton("Fire1"));
     }
 
     public InputCollection GetPlayerInput(int playerCount) {
@@ -32,15 +32,17 @@ public class InputManager : MonoBehaviour
 public class InputCollection {
     float horizontal;
     bool jump;
+    bool jumpHold;
     bool attack;
 
     public InputCollection() {
         
     }
 
-    public void UpdateInputs(float horizontal, bool jump, bool attack) {
+    public void UpdateInputs(float horizontal, bool jump, bool jumpHold, bool attack) {
         this.horizontal = horizontal;
         this.jump = jump;
+        this.jumpHold = jumpHold;
         this.attack = attack;
     }
 
@@ -50,6 +52,10 @@ public class InputCollection {
 
     public bool GetJump() {
         return this.jump;
+    }
+
+    public bool GetJumpHold() {
+        return this.jumpHold;
     }
 
     public bool GetAttack() {
