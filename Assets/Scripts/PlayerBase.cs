@@ -27,10 +27,10 @@ public class PlayerBase : MonoBehaviour
     void Update()
     {
         InputCollection ic = inputManager.GetPlayerInput(this.playerNum);
-        this.handleInput(ic);
+        this.handleMovement(ic);
     }
 
-    protected void handleInput(InputCollection ic) {
+    protected void handleMovement(InputCollection ic) {
         // Handle horizontal
         float xChange = ic.GetHorizontal() * horizontalMovementModifier;
         this.transform.position = new Vector3(
@@ -39,7 +39,7 @@ public class PlayerBase : MonoBehaviour
             this.transform.position.z
         );
 
-        // Handle jumping
+        // Handle jump
         if (ic.GetJump() && this.grounded) {
             rb.velocity = Vector2.up * jumpVelocity;
             this.grounded = false;
