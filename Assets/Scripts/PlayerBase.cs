@@ -10,10 +10,10 @@ public class PlayerBase : MonoBehaviour
     private Rigidbody2D rb;
     private bool grounded;
 
-    public float horizontalMovementModifier = 0.25f;
-    public float jumpVelocity = 5.0f;
-    public float fallMultiplier = 2.5f;
-    public float lowFallMultiplier = 2.0f;
+    public float horizontalMovementModifier;
+    public float jumpVelocity;
+    public float fallMultiplier;
+    public float lowFallMultiplier;
 
     // Start is called before the first frame update
     void Start()
@@ -33,11 +33,7 @@ public class PlayerBase : MonoBehaviour
     protected void handleMovement(InputCollection ic) {
         // Handle horizontal
         float xChange = ic.GetHorizontal() * horizontalMovementModifier;
-        this.transform.position = new Vector3(
-            this.transform.position.x + xChange, 
-            this.transform.position.y, 
-            this.transform.position.z
-        );
+        transform.Translate(new Vector3(xChange * Time.deltaTime, 0, 0));
 
         // Handle jump
         if (ic.GetJump() && this.grounded) {
