@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -10,24 +11,35 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Cancel")) {
-            if(GameIsPaused) {
-                Resume();
-            } else {
-                Pause();
-            }
+        // TODO: Allow for more flexible user input methods
+        if(Input.GetKeyDown(KeyCode.Escape)) {
+            TogglePause();
         }
     }
 
-    void Resume() {
-        pauseMenuUI.SetActive(false);
-        Time.timeScale = 1f;
-        GameIsPaused = false;
+    // Sets the pause state to the opposite of the current state
+    public void TogglePause() {
+        pause(!GameIsPaused);
     }
 
-    void Pause() {
-        pauseMenuUI.SetActive(true);
-        Time.timeScale = 0f;
-        GameIsPaused = true;
+    private void pause(bool isPaused) {
+        pauseMenuUI.SetActive(isPaused);
+        GameIsPaused = isPaused;
+        Time.timeScale = isPaused ? 0f : 1f;
+    }
+
+    // Restart
+    public void Restart() {
+        pause(false);
+        int currentScene = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentScene);
+
+    }
+
+    // Quit
+    public void QuitToMainMenu() {
+        pause(false);
+        int previousScene = SceneManager.GetActiveScene().buildIndex - 1;
+        SceneManager.LoadScene(previousScene);
     }
 }
