@@ -1,24 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerBase : MonoBehaviour
 {
-    public InputManager inputManager;
-
-    private int playerNum;
     private Rigidbody2D rb;
     private bool grounded;
 
     public float horizontalMovementModifier;
     public float jumpVelocity;
-    public float fallMultiplier;
-    public float lowFallMultiplier;
+
+    private float xChange;
+    private bool jump;
 
     // Start is called before the first frame update
     void Start()
     {
-        this.playerNum = 0;
         this.rb = this.GetComponent<Rigidbody2D>();
         this.grounded = false;
     }
@@ -26,25 +24,30 @@ public class PlayerBase : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        InputCollection ic = inputManager.GetPlayerInput(this.playerNum);
-        this.handleMovement(ic);
+        this.handleMovement();
     }
 
-    protected void handleMovement(InputCollection ic) {
+    protected void handleMovement() {
+
+        transform.Translate(new Vector3());
+
         // Handle horizontal
-        float xChange = ic.GetHorizontal() * horizontalMovementModifier;
-        transform.Translate(new Vector3(xChange * Time.deltaTime, 0, 0));
+        transform.Translate(new Vector3(this.xChange * this.horizontalMovementModifier * Time.deltaTime, 0, 0));
 
         // Handle jump
-        if (ic.GetJump() && this.grounded) {
+        if (this.jump && this.grounded) {
             rb.velocity = Vector2.up * jumpVelocity;
             this.grounded = false;
+            this.jump = false;
         }
-        if (rb.velocity.y < 0) {
-            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
-        } else if (rb.velocity.y > 0 && !ic.GetJumpHold()) {
-            rb.velocity += Vector2.up * Physics2D.gravity.y * (lowFallMultiplier - 1) * Time.deltaTime;
-        }
+    }
+
+    private void OnMove(InputValue value) {
+        xChange = value.Get<Vector2>().x;
+    }
+
+    private void OnJump() {
+        jump = true;
     }
 
     public void Die() {
