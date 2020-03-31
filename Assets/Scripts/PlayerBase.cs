@@ -47,7 +47,7 @@ public class PlayerBase : MonoBehaviour
     }
 
     private void OnJump() {
-        jump = true;
+        this.jump = true;
     }
 
     public void Die() {
@@ -57,7 +57,7 @@ public class PlayerBase : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other) {
         // TODO: more consistent raycast logic needed
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.6f);
-        if (hit.collider != null && hit.collider.tag == "Ground") {
+        if (hit.collider != null) {
             this.grounded = true;
         }
     }
