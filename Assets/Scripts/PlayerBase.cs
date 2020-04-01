@@ -11,8 +11,8 @@ public class PlayerBase : MonoBehaviour
     public float horizontalMovementModifier;
     public float jumpVelocity;
 
-    private float xChange;
-    private bool jump;
+    private float m_xChange;
+    private bool m_isJumping;
 
     // Start is called before the first frame update
     void Start()
@@ -32,22 +32,22 @@ public class PlayerBase : MonoBehaviour
         transform.Translate(new Vector3());
 
         // Handle horizontal
-        transform.Translate(new Vector3(this.xChange * this.horizontalMovementModifier * Time.deltaTime, 0, 0));
+        transform.Translate(new Vector3(this.m_xChange * this.horizontalMovementModifier * Time.deltaTime, 0, 0));
 
         // Handle jump
-        if (this.jump && this.grounded) {
+        if (this.m_isJumping && this.grounded) {
             rb.velocity = Vector2.up * jumpVelocity;
             this.grounded = false;
-            this.jump = false;
+            this.m_isJumping = false;
         }
     }
 
     private void OnMove(InputValue value) {
-        xChange = value.Get<Vector2>().x;
+        this.m_xChange = value.Get<Vector2>().x;
     }
 
     private void OnJump() {
-        this.jump = true;
+        this.m_isJumping = true;
     }
 
     public void Die() {
