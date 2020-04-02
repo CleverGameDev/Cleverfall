@@ -1,0 +1,1408 @@
+fileFormatVersion: 2
+guid: 4fad312ba1e9e4dbca15fd01992a5bdb
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7474831727883183029
+    second: tmw_desert_spacing_0
+  - first:
+      213: 4153611628215931298
+    second: tmw_desert_spacing_1
+  - first:
+      213: -5981515328050987234
+    second: gray_block
+  - first:
+      213: 7930253879679041280
+    second: brown_brick_block
+  - first:
+      213: -2384579906978627187
+    second: sand_block
+  - first:
+      213: -6699913669041807529
+    second: tmw_desert_spacing_0
+  - first:
+      213: -5981515328050987234
+    second: tmw_desert_spacing_2
+  - first:
+      213: -2111116262496807523
+    second: tmw_desert_spacing_3
+  - first:
+      213: 2631546485840149071
+    second: tmw_desert_spacing_4
+  - first:
+      213: -6820122378064374832
+    second: tmw_desert_spacing_5
+  - first:
+      213: -5705438969652321093
+    second: tmw_desert_spacing_6
+  - first:
+      213: 7241316655400774331
+    second: tmw_desert_spacing_7
+  - first:
+      213: -8870137566861586445
+    second: tmw_desert_spacing_8
+  - first:
+      213: 6248932228024418094
+    second: tmw_desert_spacing_9
+  - first:
+      213: 8079004780334033526
+    second: tmw_desert_spacing_10
+  - first:
+      213: 6242127366770768761
+    second: tmw_desert_spacing_11
+  - first:
+      213: -8274597716353217233
+    second: tmw_desert_spacing_12
+  - first:
+      213: -172916831853517966
+    second: tmw_desert_spacing_13
+  - first:
+      213: 5766576628905575391
+    second: tmw_desert_spacing_14
+  - first:
+      213: -5686337240537644404
+    second: tmw_desert_spacing_15
+  - first:
+      213: 8281159364641368040
+    second: tmw_desert_spacing_16
+  - first:
+      213: 3238873484244300420
+    second: tmw_desert_spacing_17
+  - first:
+      213: -1305722938309128247
+    second: tmw_desert_spacing_18
+  - first:
+      213: 5579196283200233896
+    second: tmw_desert_spacing_19
+  - first:
+      213: -1011524263490048639
+    second: tmw_desert_spacing_20
+  - first:
+      213: 4559456935489282456
+    second: tmw_desert_spacing_21
+  - first:
+      213: -5615603000008736228
+    second: tmw_desert_spacing_22
+  - first:
+      213: 4989562366473565105
+    second: tmw_desert_spacing_23
+  - first:
+      213: 650292974660872699
+    second: tmw_desert_spacing_24
+  - first:
+      213: 8251806492837255808
+    second: tmw_desert_spacing_25
+  - first:
+      213: -5619712951609301936
+    second: tmw_desert_spacing_26
+  - first:
+      213: -6472380242835965403
+    second: tmw_desert_spacing_27
+  - first:
+      213: -5920471371844626302
+    second: tmw_desert_spacing_28
+  - first:
+      213: -1413542130471443182
+    second: tmw_desert_spacing_29
+  - first:
+      213: -3830360681804172684
+    second: tmw_desert_spacing_30
+  - first:
+      213: -3222798756903476899
+    second: tmw_desert_spacing_31
+  - first:
+      213: -66038574240223046
+    second: tmw_desert_spacing_32
+  - first:
+      213: -7618514312437287792
+    second: tmw_desert_spacing_33
+  - first:
+      213: 2866356331305735509
+    second: tmw_desert_spacing_34
+  - first:
+      213: -407432292289368925
+    second: tmw_desert_spacing_35
+  - first:
+      213: -861603557409189614
+    second: tmw_desert_spacing_36
+  - first:
+      213: -2591615017352146691
+    second: tmw_desert_spacing_37
+  - first:
+      213: 6819240485511714773
+    second: tmw_desert_spacing_38
+  - first:
+      213: 2624645196713241303
+    second: tmw_desert_spacing_39
+  - first:
+      213: 9207571648741138429
+    second: tmw_desert_spacing_40
+  - first:
+      213: -797754904390533996
+    second: tmw_desert_spacing_41
+  - first:
+      213: 6778665563708763125
+    second: tmw_desert_spacing_42
+  - first:
+      213: 8779384594681906221
+    second: tmw_desert_spacing_43
+  - first:
+      213: 3837581013894548136
+    second: tmw_desert_spacing_44
+  - first:
+      213: -4185024469984944664
+    second: tmw_desert_spacing_45
+  - first:
+      213: 4714860236048875299
+    second: tmw_desert_spacing_46
+  - first:
+      213: 1234829011150436449
+    second: tmw_desert_spacing_47
+  - first:
+      213: -7937023197021204749
+    second: tmw_desert_spacing_1
+  - first:
+      213: 7930253879679041280
+    second: tmw_desert_spacing_2
+  - first:
+      213: 8844284664646306037
+    second: tmw_desert_spacing_3
+  - first:
+      213: -5465397121972946453
+    second: tmw_desert_spacing_4
+  - first:
+      213: -3986543866565785065
+    second: tmw_desert_spacing_5
+  - first:
+      213: -5194204669541958103
+    second: tmw_desert_spacing_6
+  - first:
+      213: 428315968813285218
+    second: tmw_desert_spacing_7
+  - first:
+      213: -2760694874571110708
+    second: tmw_desert_spacing_8
+  - first:
+      213: 4829233398280649602
+    second: tmw_desert_spacing_9
+  - first:
+      213: 6802065222311876119
+    second: tmw_desert_spacing_10
+  - first:
+      213: -9174359169880932071
+    second: tmw_desert_spacing_11
+  - first:
+      213: -2845728416559159943
+    second: tmw_desert_spacing_12
+  - first:
+      213: -7014318938472818762
+    second: tmw_desert_spacing_13
+  - first:
+      213: -2515429672763265153
+    second: tmw_desert_spacing_14
+  - first:
+      213: 2078897624506057017
+    second: tmw_desert_spacing_15
+  - first:
+      213: -1107704587679849567
+    second: tmw_desert_spacing_16
+  - first:
+      213: -8954926036185375696
+    second: tmw_desert_spacing_17
+  - first:
+      213: -1060242171078673053
+    second: tmw_desert_spacing_18
+  - first:
+      213: -6509962446122923584
+    second: tmw_desert_spacing_19
+  - first:
+      213: 5604179382155489271
+    second: tmw_desert_spacing_20
+  - first:
+      213: -918164370601582311
+    second: tmw_desert_spacing_21
+  - first:
+      213: 7855608713690797526
+    second: tmw_desert_spacing_22
+  - first:
+      213: -7684689274728028323
+    second: tmw_desert_spacing_23
+  - first:
+      213: -7134157188934160248
+    second: tmw_desert_spacing_24
+  - first:
+      213: -5091040324405014552
+    second: tmw_desert_spacing_25
+  - first:
+      213: -7257517878129230328
+    second: tmw_desert_spacing_26
+  - first:
+      213: -4897725458096195668
+    second: tmw_desert_spacing_27
+  - first:
+      213: 6944931590069110723
+    second: tmw_desert_spacing_28
+  - first:
+      213: 1881041905760708590
+    second: tmw_desert_spacing_29
+  - first:
+      213: 2318439914848373405
+    second: tmw_desert_spacing_30
+  - first:
+      213: -4919605804296522379
+    second: tmw_desert_spacing_31
+  - first:
+      213: -8774921566071003519
+    second: tmw_desert_spacing_32
+  - first:
+      213: -2563933552002130848
+    second: tmw_desert_spacing_33
+  - first:
+      213: 6415976252213945098
+    second: tmw_desert_spacing_34
+  - first:
+      213: -6908621910496877224
+    second: tmw_desert_spacing_35
+  - first:
+      213: -5460712763731165747
+    second: tmw_desert_spacing_36
+  - first:
+      213: 1846001091573372550
+    second: tmw_desert_spacing_37
+  - first:
+      213: 5075352295109719433
+    second: tmw_desert_spacing_38
+  - first:
+      213: -3750627901827456871
+    second: tmw_desert_spacing_39
+  - first:
+      213: -5340695967510673643
+    second: tmw_desert_spacing_40
+  - first:
+      213: 5322190703973369587
+    second: tmw_desert_spacing_41
+  - first:
+      213: -6321290121142408393
+    second: tmw_desert_spacing_42
+  - first:
+      213: 7163693131094076399
+    second: tmw_desert_spacing_43
+  - first:
+      213: -4174515345289824807
+    second: tmw_desert_spacing_44
+  - first:
+      213: 1235859901303209463
+    second: tmw_desert_spacing_45
+  - first:
+      213: 7429227651208048578
+    second: tmw_desert_spacing_46
+  - first:
+      213: -8019970718785037263
+    second: tmw_desert_spacing_47
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: tmw_desert_spacing_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 166
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75f9af204002503a0800000000000000
+      internalID: -6699913669041807529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tmw_desert_spacing_1
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 166
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fe048754770ad190800000000000000
+      internalID: -7937023197021204749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tmw_desert_spacing_2
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 166
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00fbee423ebed0e60800000000000000
+      internalID: 7930253879679041280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tmw_desert_spacing_3
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 166
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f88da02b063dba70800000000000000
+      internalID: 8844284664646306037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tmw_desert_spacing_4
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 166
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be93c5446420724b0800000000000000
+      internalID: -5465397121972946453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tmw_desert_spacing_5
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 166
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71a85d79973fca8c0800000000000000
+      internalID: -3986543866565785065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tmw_desert_spacing_6
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 166
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92eb6458f5a7ae7b0800000000000000
+      internalID: -5194204669541958103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tmw_desert_spacing_7
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 166
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26f3eb4ba1fa1f500800000000000000
+      internalID: 428315968813285218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tmw_desert_spacing_8
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 133
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc682fb63aa00b9d0800000000000000
+      internalID: -2760694874571110708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tmw_desert_spacing_9
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 133
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28b78f97032e40340800000000000000
+      internalID: 4829233398280649602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tmw_desert_spacing_10
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 133
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71610f2e74ac56e50800000000000000
+      internalID: 6802065222311876119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tmw_desert_spacing_11
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 133
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 911466d51f02ea080800000000000000
+      internalID: -9174359169880932071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tmw_desert_spacing_12
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 133
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 975a1cb1511f188d0800000000000000
+      internalID: -2845728416559159943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tmw_desert_spacing_13
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 133
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b75803c61228ae90800000000000000
+      internalID: -7014318938472818762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tmw_desert_spacing_14
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 133
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7fe7793a06671dd0800000000000000
+      internalID: -2515429672763265153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tmw_desert_spacing_15
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 133
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9314611006ab9dc10800000000000000
+      internalID: 2078897624506057017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tmw_desert_spacing_16
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 100
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a3a54fdb84a0a0f0800000000000000
+      internalID: -1107704587679849567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tmw_desert_spacing_17
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 100
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03c164f1736b9b380800000000000000
+      internalID: -8954926036185375696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tmw_desert_spacing_18
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 100
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36d77f0ec534941f0800000000000000
+      internalID: -1060242171078673053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tmw_desert_spacing_19
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 100
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c9c5b185a7f7a5a0800000000000000
+      internalID: -6509962446122923584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tmw_desert_spacing_20
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 100
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ff22f2b47b06cd40800000000000000
+      internalID: 5604179382155489271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tmw_desert_spacing_21
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 100
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9116fdc9e560243f0800000000000000
+      internalID: -918164370601582311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tmw_desert_spacing_22
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 100
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d5d00a118ab40d60800000000000000
+      internalID: 7855608713690797526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tmw_desert_spacing_23
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 100
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d57e492e1df7a5590800000000000000
+      internalID: -7684689274728028323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tmw_desert_spacing_24
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 67
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 880b7c5c5d16efc90800000000000000
+      internalID: -7134157188934160248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tmw_desert_spacing_25
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 67
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ef46a66ccdf859b0800000000000000
+      internalID: -5091040324405014552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tmw_desert_spacing_26
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 67
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80e7f0b11fd184b90800000000000000
+      internalID: -7257517878129230328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tmw_desert_spacing_27
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 67
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca7f9c625a8c70cb0800000000000000
+      internalID: -4897725458096195668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tmw_desert_spacing_28
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 67
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c7457f3c7a516060800000000000000
+      internalID: 6944931590069110723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tmw_desert_spacing_29
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 67
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee7ad78a5adca1a10800000000000000
+      internalID: 1881041905760708590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tmw_desert_spacing_30
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 67
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9acf95a1d0cc2020800000000000000
+      internalID: 2318439914848373405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tmw_desert_spacing_31
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 67
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 575b4ff069c0abbb0800000000000000
+      internalID: -4919605804296522379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tmw_desert_spacing_32
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 34
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1866c62c357393680800000000000000
+      internalID: -8774921566071003519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tmw_desert_spacing_33
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 34
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06c153dc4041b6cd0800000000000000
+      internalID: -2563933552002130848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tmw_desert_spacing_34
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 34
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a03ed8878602a0950800000000000000
+      internalID: 6415976252213945098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tmw_desert_spacing_35
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 34
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8556a51d9f4af10a0800000000000000
+      internalID: -6908621910496877224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tmw_desert_spacing_36
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 34
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcdbc596ca6a734b0800000000000000
+      internalID: -5460712763731165747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tmw_desert_spacing_37
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 34
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 686d63656305e9910800000000000000
+      internalID: 1846001091573372550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tmw_desert_spacing_38
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 34
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9857af3a5064f6640800000000000000
+      internalID: 5075352295109719433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tmw_desert_spacing_39
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 34
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 990e7e28bc713fbc0800000000000000
+      internalID: -3750627901827456871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tmw_desert_spacing_40
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5174a23505902e5b0800000000000000
+      internalID: -5340695967510673643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tmw_desert_spacing_41
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 1
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f608314f383cd940800000000000000
+      internalID: 5322190703973369587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tmw_desert_spacing_42
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 1
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73bee1f50244648a0800000000000000
+      internalID: -6321290121142408393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tmw_desert_spacing_43
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 1
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: feba4c6a2fc8a6360800000000000000
+      internalID: 7163693131094076399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tmw_desert_spacing_44
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 1
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d5359639642116c0800000000000000
+      internalID: -4174515345289824807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tmw_desert_spacing_45
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 1
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7fdb3594808a62110800000000000000
+      internalID: 1235859901303209463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tmw_desert_spacing_46
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 1
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2cfe3c1ef2be91760800000000000000
+      internalID: 7429227651208048578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tmw_desert_spacing_47
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 1
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13c98c57f1753b090800000000000000
+      internalID: -8019970718785037263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
