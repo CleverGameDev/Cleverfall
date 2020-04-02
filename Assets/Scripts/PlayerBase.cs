@@ -46,9 +46,14 @@ public class PlayerBase : MonoBehaviour
         transform.Translate(new Vector3(this.m_xChange * this.horizontalMovementModifier * Time.deltaTime, 0, 0));
 
         // Handle jump
-        if (this.m_isJumping && this.grounded) {
-            rb.velocity = Vector2.up * jumpVelocity;
-            this.grounded = false;
+        if (this.m_isJumping) {
+            // only jump if player is bounded
+            if (this.grounded) {
+                rb.velocity = Vector2.up * jumpVelocity;
+                this.grounded = false;
+            }
+            // don't allow a jump input to queue up
+            // for immediately after the player lands
             this.m_isJumping = false;
         }
     }
