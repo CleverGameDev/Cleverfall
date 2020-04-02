@@ -171,7 +171,7 @@ PrefabInstance:
     - target: {fileID: 604605051686620333, guid: 482d38cfe73754a4f9f4e240054c82f5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 604605051686620333, guid: 482d38cfe73754a4f9f4e240054c82f5,
         type: 3}
@@ -2555,7 +2555,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -2572,7 +2572,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 5.6291265
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2652,7 +2652,7 @@ PrefabInstance:
     - target: {fileID: 604605051686620333, guid: 482d38cfe73754a4f9f4e240054c82f5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 604605051686620333, guid: 482d38cfe73754a4f9f4e240054c82f5,
         type: 3}
@@ -2727,7 +2727,7 @@ PrefabInstance:
     - target: {fileID: 604605051686620333, guid: 482d38cfe73754a4f9f4e240054c82f5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 604605051686620333, guid: 482d38cfe73754a4f9f4e240054c82f5,
         type: 3}
@@ -2889,7 +2889,7 @@ GameObject:
   - component: {fileID: 1005484177}
   - component: {fileID: 1005484181}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: PauseMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3666,7 +3666,7 @@ PrefabInstance:
     - target: {fileID: 604605051686620333, guid: 482d38cfe73754a4f9f4e240054c82f5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 604605051686620333, guid: 482d38cfe73754a4f9f4e240054c82f5,
         type: 3}
