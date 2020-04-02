@@ -15,6 +15,13 @@ public class PlayerBase : MonoBehaviour
     private float m_xChange;
     private bool m_isJumping;
 
+    // [PN] TODO: make these constraints flexible depending on stage
+    private const float leftConstraint = -9.4f;
+    private const float rightConstraint = 9.4f;
+    private const float bottomConstraint = -4.6f;
+    private const float topConstraint = 4.6f;
+    private const float buffer = 0.1f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +35,7 @@ public class PlayerBase : MonoBehaviour
     void Update()
     {
         this.handleMovement();
+        this.handleWraparound();
     }
 
     protected void handleMovement() {
@@ -42,6 +50,22 @@ public class PlayerBase : MonoBehaviour
             rb.velocity = Vector2.up * jumpVelocity;
             this.grounded = false;
             this.m_isJumping = false;
+        }
+    }
+
+    private void handleWraparound() {
+        // Handle wraparound on the x-axis
+        if (transform.position.x < leftConstraint - buffer) {
+            transform.position = new Vector3(rightConstraint + buffer,transform.position.y, transform.position.z);
+        } else if (transform.position.x > rightConstraint + buffer) {
+            transform.position = new Vector3(leftConstraint - buffer,transform.position.y, transform.position.z);
+        }
+
+        // Handle wraparound on the y-axis
+        if (transform.position.y < bottomConstraint - buffer) {
+            transform.position = new Vector3(transform.position.x, topConstraint + buffer, transform.position.z);
+        } else if (transform.position.y > topConstraint + buffer) {
+            transform.position = new Vector3(transform.position.x, bottomConstraint - buffer, transform.position.z);
         }
     }
 
