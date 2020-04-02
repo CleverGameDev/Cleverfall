@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 604605051686620333}
   m_Layer: 0
-  m_Name: SP_Left
+  m_Name: PlayerSpawn
   m_TagString: Respawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

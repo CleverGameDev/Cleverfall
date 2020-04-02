@@ -86,6 +86,10 @@ public class PlayerBase : MonoBehaviour
         this.m_isJumping = true;
     }
 
+    private void OnMenu() {
+        GameObject.Find("PauseMenu").GetComponent<PauseMenu>().TogglePause();
+    }
+
     public void Die() {
         Destroy(this);
     }
