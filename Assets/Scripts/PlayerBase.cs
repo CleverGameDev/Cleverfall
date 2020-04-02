@@ -10,7 +10,8 @@ public class PlayerBase : MonoBehaviour
 
     public float horizontalMovementModifier;
     public float jumpVelocity;
-    public Transform[] spawns;
+
+    private GameObject[] spawns;
 
     private float m_xChange;
     private bool m_isJumping;
@@ -27,8 +28,11 @@ public class PlayerBase : MonoBehaviour
     {
         this.rb = this.GetComponent<Rigidbody2D>();
         this.grounded = false;
+        spawns = GameObject.FindGameObjectsWithTag("Respawn");
+
         int index = Random.Range(0, spawns.Length);
-        transform.position = new Vector3(spawns[index].position.x, spawns[index].position.y, spawns[index].position.z);
+        Vector3 pos = spawns[index].transform.position;
+        transform.position = new Vector3(pos.x, pos.y, pos.z);
     }
 
     // Update is called once per frame
@@ -80,6 +84,10 @@ public class PlayerBase : MonoBehaviour
 
     private void OnJump() {
         this.m_isJumping = true;
+    }
+
+    private void OnMenu() {
+        GameObject.Find("PauseMenu").GetComponent<PauseMenu>().TogglePause();
     }
 
     public void Die() {
