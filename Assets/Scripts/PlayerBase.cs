@@ -10,6 +10,7 @@ public class PlayerBase : MonoBehaviour
 
     public float horizontalMovementModifier;
     public float jumpVelocity;
+    public Transform[] spawns;
 
     private float m_xChange;
     private bool m_isJumping;
@@ -19,6 +20,8 @@ public class PlayerBase : MonoBehaviour
     {
         this.rb = this.GetComponent<Rigidbody2D>();
         this.grounded = false;
+        int index = Random.Range(0, spawns.Length);
+        transform.position = new Vector3(spawns[index].position.x, spawns[index].position.y, spawns[index].position.z);
     }
 
     // Update is called once per frame
