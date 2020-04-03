@@ -5,9 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    private string[] levels = new string[]{
+        // These must match the exact scene names
+        "SandyLevel",
+        "DungeonLevel",
+    };
+
     public void PlayGame() {
-        int nextScene = SceneManager.GetActiveScene().buildIndex + 1;
-        SceneManager.LoadScene(nextScene);
+        string randomLevel = levels[Random.Range(0, levels.Length)]; 
+        SceneManager.LoadScene(randomLevel);
     }
 
     public void QuitGame() {
