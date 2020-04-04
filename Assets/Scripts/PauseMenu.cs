@@ -24,13 +24,11 @@ public class PauseMenu : MonoBehaviour
         pause(false);
         int currentScene = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentScene);
-
     }
 
     // Quit
     public void QuitToMainMenu() {
         pause(false);
-        int previousScene = SceneManager.GetActiveScene().buildIndex - 1;
-        SceneManager.LoadScene(previousScene);
+        SceneManager.LoadScene("Menu");
     }
 }

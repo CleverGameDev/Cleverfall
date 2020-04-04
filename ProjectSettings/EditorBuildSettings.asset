@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: ae7e96a8509d95f4c902bc78e697b05c
   - enabled: 1
-    path: Assets/Scenes/Stage1.unity
+    path: Assets/Scenes/Levels/DungeonLevel.unity
+    guid: 42d7e7bd4ee89d248a3413e54ef5545a
+  - enabled: 1
+    path: Assets/Scenes/Levels/SandyLevel.unity
     guid: e8ebce38814e4694d9a9f8d48e59d116
   m_configObjects: {}
