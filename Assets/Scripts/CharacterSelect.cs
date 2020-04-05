@@ -23,7 +23,7 @@ public class CharacterSelect : MonoBehaviour
             TextMeshProUGUI c = choosers[i].GetComponent<TextMeshProUGUI>();
             if (i < players.Length) {
                 string character = players[i].GetComponent<HumanPlayer>().GetCharacter();
-                c.text = character + "\nP" + (i+1);
+                c.text = character + "\n\n(P" + (i+1) + ")";
             } else {
                 c.text = "";
             }

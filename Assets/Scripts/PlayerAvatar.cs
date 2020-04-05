@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerBase : MonoBehaviour
+public class PlayerAvatar: MonoBehaviour
 {
     private Rigidbody2D rb;
     private bool grounded;
@@ -87,18 +87,6 @@ public class PlayerBase : MonoBehaviour
         }
     }
 
-    private void OnMove(InputValue value) {
-        this.m_xChange = value.Get<Vector2>().x;
-    }
-
-    private void OnJump() {
-        this.m_isJumping = true;
-    }
-
-    private void OnMenu() {
-        GameObject.Find("PauseMenu").GetComponent<PauseMenu>().TogglePause();
-    }
-
     public void Die() {
         Destroy(gameObject);
         Destroy(this);
@@ -121,5 +109,22 @@ public class PlayerBase : MonoBehaviour
                 this.hitpoints -= 1;
             }
         }
+    }
+
+    //////////////////////
+    // Input Handling
+    //////////////////////
+    // Passing down events from HumanPlayer
+    public void _onMove(InputValue value) {
+        this.m_xChange = value.Get<Vector2>().x;
+        Debug.Log("Avatar:m_xChange .. " + m_xChange + " .. " + this.m_xChange);
+    }
+
+    public void _onJump() {
+        this.m_isJumping = true;
+    }
+
+    public void _onMenu() {
+        GameObject.Find("PauseMenu").GetComponent<PauseMenu>().TogglePause();
     }
 }
