@@ -174,7 +174,7 @@
             ]
         },
         {
-            "name": "MainMenu",
+            "name": "CharacterSelect",
             "id": "1bc3ca4e-c9a9-44f8-8f84-e1ee71a2fe5f",
             "actions": [
                 {
@@ -205,6 +205,14 @@
                     "name": "PreviousCharacter",
                     "type": "Button",
                     "id": "17450d6f-b331-46ce-97a0-2a7b80bd7829",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Start",
+                    "type": "Button",
+                    "id": "4451adc7-5cc3-4d42-90bb-83f1650c8fda",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
@@ -296,6 +304,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "PreviousCharacter",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6b2fb9f1-43a6-42e7-b263-3ca4f76d48b8",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Start",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7d79b1ca-b9c1-43fa-bdb1-124d0b5f613f",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Start",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

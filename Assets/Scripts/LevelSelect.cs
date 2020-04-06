@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
-
+using UnityEngine.UIElements;
+using UnityEngine.EventSystems;
 
 public class LevelSelect : MonoBehaviour
 {
@@ -39,6 +40,11 @@ public class LevelSelect : MonoBehaviour
         selected = (levels.Length + selected - 1) % levels.Length;
         setLevelText();
     }
+
+    // private void OnEnable() {
+    //     GameObject btn = GameObject.Find("PlayButton");
+    //     EventSystem.current.SetSelectedGameObject(btn);
+    // }
 
     void setLevelText() {
         levelText = GameObject.Find("LevelName").GetComponent<TextMeshProUGUI>();

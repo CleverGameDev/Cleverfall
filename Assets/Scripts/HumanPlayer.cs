@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Assertions;
+using UnityEngine.UIElements;
 
 public class HumanPlayer : MonoBehaviour
 {
@@ -14,11 +14,14 @@ public class HumanPlayer : MonoBehaviour
     private GameObject playerAvatar;
 
     private string[] characters = {
-        "larry", 
-        "curly", 
-        "moe"
+        "joy", 
+        "sadness", 
+        "anger",
+        "disgust",
+        "fear",
     };
     private int selectedCharacterIdx = 0;
+    bool characterConfirmed = false;
 
     // Start is called before the first frame update
     void Start()
@@ -34,51 +37,128 @@ public class HumanPlayer : MonoBehaviour
         
     }
 
-    //////////////////
-    // Gameplay
-    //////////////////
+    ////////////////////////////
+    // Combat (core Gameplay)
+    ////////////////////////////
     // setup
     public void SetupCombat() {
         // Stop listening for menu events
         playerAvatar = Instantiate(playerAvatarPrefab);
+        // Set bg color
+        SpriteRenderer ren = playerAvatar.GetComponent<SpriteRenderer>();
+        ren.material.SetColor("_Color", getPlayerColor());
+
         playerInput.SwitchCurrentActionMap("Combat");
+    }
+
+    private Color getPlayerColor() { 
+        switch (playerInput.playerIndex)
+        {
+            case 0:
+                return Color.red;
+            case 1: 
+                return Color.green;
+            case 2: 
+                return Color.magenta;
+            case 3:
+                return Color.cyan;
+            default:
+                return Color.black;
+        }
     }
 
     public void CleanupCombat() {
         // Stop listening for Combat events
-        playerInput.SwitchCurrentActionMap("MainMenu");
+        playerInput.currentActionMap.Disable();
         Destroy(playerAvatar); // TODO: unity doesnt like the Destroy here
     }
 
 
-    // input event listeners
+    // player input event listeners
     private void OnMove(InputValue value) {
         PlayerAvatar pa = playerAvatar.GetComponent<PlayerAvatar>();
+        if (pa == null) { return; }
+
         pa._onMove(value);
     }
 
     private void OnJump() {
         PlayerAvatar pa = playerAvatar.GetComponent<PlayerAvatar>();
+        if (pa == null) { return; }
+
         pa._onJump();
     }
 
     private void OnMenu() {
         PlayerAvatar pa = playerAvatar.GetComponent<PlayerAvatar>();
+        if (pa == null) { return; }
+
         pa._onMenu();
     }
 
     //////////////////
-    // Menu
+    // CharacterSelect
     //////////////////
-    // TODO: Only allow making these changes on the CharacterSelect screen
+    public void SetupCharacterSelect() {
+        // Stop listening for menu events
+        playerInput.SwitchCurrentActionMap("CharacterSelect");
+        playerInput.currentActionMap.Enable();
+        characterConfirmed = false;
+    }
+
+    public void CleanupCharacterSelect() {
+        // Stop listening for Combat events
+        playerInput.currentActionMap.Disable();
+    }
+
+    // player input event listeners
     public void OnNextCharacter() {
+        if (characterConfirmed) {
+            return;
+        }
+
         selectedCharacterIdx = (selectedCharacterIdx + 1 ) % characters.Length;
     }
     public void OnPreviousCharacter() {
+        if (characterConfirmed) {
+            return;
+        }
+
         selectedCharacterIdx = (characters.Length + selectedCharacterIdx - 1 ) % characters.Length;
     }
 
+    public void OnAccept() {
+        characterConfirmed = true;
+
+        // TODO:
+        // if (allPlayersConfirmed) {
+        //     // Navigate to next screen: level select
+        // }
+    }
+
+    public void OnCancel() {
+        characterConfirmed = false;
+
+        // TODO:
+        // if (!characterConfirmed) {
+        // Navigate to previous screen: 
+        // }
+        
+    }
+
+    // public void OnStart() {
+    //     GameObject csgo = GameObject.Find("CharacterSelect");
+    //     if (csgo == null) {
+    //         return; // TODO: this can occur if the page is still loading
+    //     }
+    //     csgo.GetComponent<CharacterSelect>().ContinueIfAllReady();
+    // }
+    
+    // other helpers
     public string GetCharacter() {
         return characters[selectedCharacterIdx];
+    }
+    public bool GetCharacterConfirmed() {
+        return characterConfirmed;
     }
 }
