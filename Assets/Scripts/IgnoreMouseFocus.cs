@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
  
+// https://answers.unity.com/questions/943854/ui-46-disable-mouse-from-stealing-focus.html
 public class IgnoreMouseFocus : MonoBehaviour
-         // https://answers.unity.com/questions/943854/ui-46-disable-mouse-from-stealing-focus.html
 {
      GameObject lastselect;
      void Start()
      {
          lastselect = new GameObject();
+
      }
      // Update is called once per frame
      void Update () {         
