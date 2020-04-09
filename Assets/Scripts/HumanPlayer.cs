@@ -52,16 +52,18 @@ public class HumanPlayer : MonoBehaviour
     }
 
     private Color getPlayerColor() { 
-        switch (playerInput.playerIndex)
+        switch (GetCharacter())
         {
-            case 0:
+            case "joy":
+                return Color.yellow;
+            case "sadness": 
+                return Color.blue;
+            case "anger": 
                 return Color.red;
-            case 1: 
+            case "disgust":
                 return Color.green;
-            case 2: 
+            case "fear":
                 return Color.magenta;
-            case 3:
-                return Color.cyan;
             default:
                 return Color.black;
         }
