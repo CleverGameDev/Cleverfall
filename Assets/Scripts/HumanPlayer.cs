@@ -42,13 +42,17 @@ public class HumanPlayer : MonoBehaviour
     ////////////////////////////
     // setup
     public void SetupCombat() {
+        spawnAvatar();
+
         // Stop listening for menu events
+        playerInput.SwitchCurrentActionMap("Combat");
+    }
+
+    void spawnAvatar() {
         playerAvatar = Instantiate(playerAvatarPrefab);
         // Set bg color
         SpriteRenderer ren = playerAvatar.GetComponent<SpriteRenderer>();
         ren.material.SetColor("_Color", getPlayerColor());
-
-        playerInput.SwitchCurrentActionMap("Combat");
     }
 
     private Color getPlayerColor() { 
@@ -72,30 +76,31 @@ public class HumanPlayer : MonoBehaviour
     public void CleanupCombat() {
         // Stop listening for Combat events
         playerInput.currentActionMap.Disable();
-        Destroy(playerAvatar); // TODO: unity doesnt like the Destroy here
+        Destroy(playerAvatar);
     }
 
 
     // player input event listeners
     private void OnMove(InputValue value) {
-        PlayerAvatar pa = playerAvatar.GetComponent<PlayerAvatar>();
-        if (pa == null) { return; }
+        if (playerAvatar == null) {
+            // player is dead
+            return;
+        }
 
-        pa._onMove(value);
+        playerAvatar.GetComponent<PlayerAvatar>()._onMove(value);
     }
 
     private void OnJump() {
-        PlayerAvatar pa = playerAvatar.GetComponent<PlayerAvatar>();
-        if (pa == null) { return; }
+        if (playerAvatar == null) {
+            // player is dead. allow respawn by pressing jump
+            spawnAvatar();
+        }
 
-        pa._onJump();
+        playerAvatar.GetComponent<PlayerAvatar>()._onJump();
     }
 
     private void OnMenu() {
-        PlayerAvatar pa = playerAvatar.GetComponent<PlayerAvatar>();
-        if (pa == null) { return; }
-
-        pa._onMenu();
+        GameObject.Find("PauseMenu").GetComponent<PauseMenu>().TogglePause();
     }
 
     //////////////////

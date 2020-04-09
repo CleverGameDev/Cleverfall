@@ -27,14 +27,7 @@ public class PlayerAvatar: MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        this.rb = this.GetComponent<Rigidbody2D>();
-        this.grounded = false;
-        this.hitpoints = 3;
-        spawns = GameObject.FindGameObjectsWithTag("Respawn");
-
-        int index = Random.Range(0, spawns.Length);
-        Vector3 pos = spawns[index].transform.position;
-        transform.position = new Vector3(pos.x, pos.y, pos.z);
+        respawn();
     }
 
     // Update is called once per frame
@@ -43,6 +36,17 @@ public class PlayerAvatar: MonoBehaviour
         this.handleMovement();
         this.handleWraparound();
         this.handleDeath();
+    }
+
+    void respawn() {
+        this.rb = this.GetComponent<Rigidbody2D>();
+        this.grounded = false;
+        this.hitpoints = 3;
+
+        spawns = GameObject.FindGameObjectsWithTag("Respawn");
+        int index = Random.Range(0, spawns.Length);
+        Vector3 pos = spawns[index].transform.position;
+        transform.position = new Vector3(pos.x, pos.y, pos.z);
     }
 
     protected void handleMovement() {
@@ -89,8 +93,6 @@ public class PlayerAvatar: MonoBehaviour
 
     public void Die() {
         Destroy(gameObject);
-        Destroy(this);
-        // Add some other handlers here
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
@@ -122,9 +124,5 @@ public class PlayerAvatar: MonoBehaviour
 
     public void _onJump() {
         this.m_isJumping = true;
-    }
-
-    public void _onMenu() {
-        GameObject.Find("PauseMenu").GetComponent<PauseMenu>().TogglePause();
     }
 }
