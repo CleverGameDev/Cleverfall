@@ -7,6 +7,7 @@ public class PlayerBase : MonoBehaviour
 {
     private Rigidbody2D rb;
     private bool grounded;
+    private int hitpoints;
 
     public float horizontalMovementModifier;
     public float jumpVelocity;
@@ -28,6 +29,7 @@ public class PlayerBase : MonoBehaviour
     {
         this.rb = this.GetComponent<Rigidbody2D>();
         this.grounded = false;
+        this.hitpoints = 3;
         spawns = GameObject.FindGameObjectsWithTag("Respawn");
 
         int index = Random.Range(0, spawns.Length);
@@ -40,6 +42,7 @@ public class PlayerBase : MonoBehaviour
     {
         this.handleMovement();
         this.handleWraparound();
+        this.handleDeath();
     }
 
     protected void handleMovement() {
@@ -78,6 +81,12 @@ public class PlayerBase : MonoBehaviour
         }
     }
 
+    private void handleDeath() {
+        if (this.hitpoints <= 0) {
+            this.Die();
+        }
+    }
+
     private void OnMove(InputValue value) {
         this.m_xChange = value.Get<Vector2>().x;
     }
@@ -91,14 +100,26 @@ public class PlayerBase : MonoBehaviour
     }
 
     public void Die() {
+        Destroy(gameObject);
         Destroy(this);
+        // Add some other handlers here
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
         // TODO: more consistent raycast logic needed
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.6f);
-        if (hit.collider != null) {
-            this.grounded = true;
+        RaycastHit2D downwardhit = Physics2D.Raycast(transform.position, Vector2.down, 0.6f);
+        RaycastHit2D upwardHit = Physics2D.Raycast(transform.position, Vector2.up, 0.6f);
+        if (downwardhit.collider != null) {
+            if (downwardhit.collider.tag == "Player") {
+                rb.velocity = Vector2.up * jumpVelocity;
+            } else {
+                this.grounded = true;
+            }
+        }
+        if (upwardHit.collider != null) {
+            if (upwardHit.collider.tag == "Player") {
+                this.hitpoints -= 1;
+            }
         }
     }
 }
