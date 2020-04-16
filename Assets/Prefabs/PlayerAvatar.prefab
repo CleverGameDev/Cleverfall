@@ -47,8 +47,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 039327eb30236b94da9e5b4421b5f571, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalMovementModifier: 15
-  jumpVelocity: 7.5
+  groundSpeed: 50
+  jumpHeight: 2
+  airAcceleration: 10
+  walkAcceleration: 15
+  airDeceleration: 1
+  groundDeceleration: 10
 --- !u!61 &5984261576749040458
 BoxCollider2D:
   m_ObjectHideFlags: 0

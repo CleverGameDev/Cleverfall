@@ -6,15 +6,21 @@ using UnityEngine.InputSystem;
 public class PlayerAvatar: MonoBehaviour
 {
     private Rigidbody2D rb;
+    private BoxCollider2D boxCollider;
     private bool grounded;
     private int hitpoints;
 
-    public float horizontalMovementModifier;
-    public float jumpVelocity;
+    public float groundSpeed;
+    public float jumpHeight;
+    public float airAcceleration;
+    public float walkAcceleration;
+    public float airDeceleration;
+    public float groundDeceleration;
 
     private GameObject[] spawns;
 
     private float m_xChange;
+    private float m_yChange;
     private bool m_isJumping;
 
     // [PN] TODO: make these constraints flexible depending on stage
@@ -40,6 +46,7 @@ public class PlayerAvatar: MonoBehaviour
 
     void respawn() {
         this.rb = this.GetComponent<Rigidbody2D>();
+        this.boxCollider = this.GetComponent<BoxCollider2D>();
         this.grounded = false;
         this.hitpoints = 3;
 
@@ -50,23 +57,35 @@ public class PlayerAvatar: MonoBehaviour
     }
 
     protected void handleMovement() {
+        float acceleration = walkAcceleration;
+        float deceleration = groundDeceleration;
 
-        transform.Translate(new Vector3());
+        // Handle sideways movement
+        float velocityX = Mathf.MoveTowards(rb.velocity.x, groundSpeed * this.m_xChange, acceleration * Time.deltaTime);
+        if (this.m_xChange == 0) {
+            velocityX = Mathf.MoveTowards(rb.velocity.x, 0, deceleration * Time.deltaTime);
+        }
 
-        // Handle horizontal
-        transform.Translate(new Vector3(this.m_xChange * this.horizontalMovementModifier * Time.deltaTime, 0, 0));
+        // Handle vertical movement
+        float velocityY = rb.velocity.y;
+        if (this.grounded) {
+            velocityY = 0;
+            if (this.m_isJumping) {
+                velocityY = Mathf.Sqrt(2 * jumpHeight * Mathf.Abs(Physics2D.gravity.y));
+                velocityY += Physics2D.gravity.y * Time.deltaTime;
 
-        // Handle jump
-        if (this.m_isJumping) {
-            // only jump if player is bounded
-            if (this.grounded) {
-                rb.velocity = Vector2.up * jumpVelocity;
+                // don't allow a jump input to queue up
+                // for immediately after the player lands
+                this.m_isJumping = false;
+
                 this.grounded = false;
             }
-            // don't allow a jump input to queue up
-            // for immediately after the player lands
-            this.m_isJumping = false;
+            if (rb.velocity.y < 0) {
+                this.grounded = false;
+            }
         }
+        rb.velocity = new Vector2(velocityX, velocityY);
+        transform.Translate(rb.velocity * Time.deltaTime);
     }
 
     private void handleWraparound() {
@@ -97,17 +116,23 @@ public class PlayerAvatar: MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other) {
         // TODO: more consistent raycast logic needed
-        RaycastHit2D downwardhit = Physics2D.Raycast(transform.position, Vector2.down, 0.6f);
-        RaycastHit2D upwardHit = Physics2D.Raycast(transform.position, Vector2.up, 0.6f);
-        if (downwardhit.collider != null) {
-            if (downwardhit.collider.tag == "Player") {
-                rb.velocity = Vector2.up * jumpVelocity;
-            } else {
+        ColliderDistance2D colliderDistance = other.collider.Distance(boxCollider);
+
+        if (colliderDistance.isOverlapped) {
+            transform.Translate(colliderDistance.pointA - colliderDistance.pointB);
+        }
+
+        if (other.collider.tag == "Ground") {
+            if (colliderDistance.normal == Vector2.up) {
                 this.grounded = true;
             }
         }
-        if (upwardHit.collider != null) {
-            if (upwardHit.collider.tag == "Player") {
+
+        if (other.collider.tag == "Player") {
+            if (colliderDistance.normal == Vector2.up) {
+                rb.velocity = Vector2.up * 2.5f;
+            }
+            if (colliderDistance.normal == Vector2.down) {
                 this.hitpoints -= 1;
             }
         }
@@ -120,9 +145,12 @@ public class PlayerAvatar: MonoBehaviour
     public void _onMove(InputValue value) {
         this.m_xChange = value.Get<Vector2>().x;
         Debug.Log("Avatar:m_xChange .. " + m_xChange + " .. " + this.m_xChange);
+        this.m_yChange = value.Get<Vector2>().y;
     }
 
     public void _onJump() {
-        this.m_isJumping = true;
+        if (this.grounded) {
+            this.m_isJumping = true;
+        }
     }
 }
