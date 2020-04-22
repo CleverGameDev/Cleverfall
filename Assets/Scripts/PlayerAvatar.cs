@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerAvatar: MonoBehaviour
-{
+public class PlayerAvatar : MonoBehaviour {
     private Rigidbody2D rb;
     private BoxCollider2D boxCollider;
     private bool grounded;
@@ -31,14 +30,12 @@ public class PlayerAvatar: MonoBehaviour
     private const float buffer = 0.1f;
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         respawn();
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         this.handleMovement();
         this.handleWraparound();
         this.handleDeath();
@@ -91,9 +88,9 @@ public class PlayerAvatar: MonoBehaviour
     private void handleWraparound() {
         // Handle wraparound on the x-axis
         if (transform.position.x < leftConstraint - buffer) {
-            transform.position = new Vector3(rightConstraint + buffer,transform.position.y, transform.position.z);
+            transform.position = new Vector3(rightConstraint + buffer, transform.position.y, transform.position.z);
         } else if (transform.position.x > rightConstraint + buffer) {
-            transform.position = new Vector3(leftConstraint - buffer,transform.position.y, transform.position.z);
+            transform.position = new Vector3(leftConstraint - buffer, transform.position.y, transform.position.z);
         }
 
         // Handle wraparound on the y-axis

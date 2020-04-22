@@ -4,8 +4,7 @@ using TMPro;
 using UnityEngine.UIElements;
 using UnityEngine.EventSystems;
 
-public class LevelSelect : MonoBehaviour
-{
+public class LevelSelect : MonoBehaviour {
 
     private TextMeshProUGUI levelText;
     private string[] levels = new string[]{
