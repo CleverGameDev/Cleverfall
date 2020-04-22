@@ -119,7 +119,7 @@ public class PlayerAvatar : MonoBehaviour {
             transform.Translate(colliderDistance.pointA - colliderDistance.pointB);
         }
 
-        if (other.collider.tag == "Ground") {
+        if (other.collider.tag == "Collideable") {
             if (colliderDistance.normal == Vector2.up) {
                 this.grounded = true;
             }

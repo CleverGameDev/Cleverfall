@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - HumanPlayer
+  - Collideable
   layers:
   - Default
   - TransparentFX
@@ -16,9 +17,9 @@ TagManager:
   - 
   - 
   - BaseLayer
-  - Platforms
-  - Walls
-  - Spikes
+  - 
+  - 
+  - 
   - 
   - 
   - 
@@ -43,15 +44,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: BaseLayer
+  - name: Player
     uniqueID: 874209927
-    locked: 0
-  - name: Walls
-    uniqueID: 2814253183
-    locked: 0
-  - name: Platforms
-    uniqueID: 2626776967
-    locked: 0
-  - name: Spikes
-    uniqueID: 554404137
     locked: 0
