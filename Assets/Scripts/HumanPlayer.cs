@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
-public class HumanPlayer : MonoBehaviour
-{
+public class HumanPlayer : MonoBehaviour {
     [SerializeField]
     public PlayerInput playerInput;
 
@@ -14,8 +13,8 @@ public class HumanPlayer : MonoBehaviour
     private GameObject playerAvatar;
 
     private string[] characters = {
-        "joy", 
-        "sadness", 
+        "joy",
+        "sadness",
         "anger",
         "disgust",
         "fear",
@@ -24,17 +23,15 @@ public class HumanPlayer : MonoBehaviour
     bool characterConfirmed = false;
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         Debug.Log("Player joined: " + playerInput.playerIndex);
         // The Human Player persists across scenes
         DontDestroyOnLoad(this.gameObject);
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
+    void Update() {
+
     }
 
     ////////////////////////////
@@ -55,14 +52,13 @@ public class HumanPlayer : MonoBehaviour
         ren.material.SetColor("_Color", getPlayerColor());
     }
 
-    private Color getPlayerColor() { 
-        switch (GetCharacter())
-        {
+    private Color getPlayerColor() {
+        switch (GetCharacter()) {
             case "joy":
                 return Color.yellow;
-            case "sadness": 
+            case "sadness":
                 return Color.blue;
-            case "anger": 
+            case "anger":
                 return Color.red;
             case "disgust":
                 return Color.green;
@@ -124,14 +120,14 @@ public class HumanPlayer : MonoBehaviour
             return;
         }
 
-        selectedCharacterIdx = (selectedCharacterIdx + 1 ) % characters.Length;
+        selectedCharacterIdx = (selectedCharacterIdx + 1) % characters.Length;
     }
     public void OnPreviousCharacter() {
         if (characterConfirmed) {
             return;
         }
 
-        selectedCharacterIdx = (characters.Length + selectedCharacterIdx - 1 ) % characters.Length;
+        selectedCharacterIdx = (characters.Length + selectedCharacterIdx - 1) % characters.Length;
     }
 
     public void OnAccept() {
@@ -150,7 +146,7 @@ public class HumanPlayer : MonoBehaviour
         // if (!characterConfirmed) {
         // Navigate to previous screen: 
         // }
-        
+
     }
 
     // public void OnStart() {
@@ -160,7 +156,7 @@ public class HumanPlayer : MonoBehaviour
     //     }
     //     csgo.GetComponent<CharacterSelect>().ContinueIfAllReady();
     // }
-    
+
     // other helpers
     public string GetCharacter() {
         return characters[selectedCharacterIdx];

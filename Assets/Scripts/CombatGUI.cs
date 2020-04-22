@@ -2,27 +2,24 @@
 using TMPro;
 using UnityEngine;
 
-public class CombatGUI : MonoBehaviour
-{
+public class CombatGUI : MonoBehaviour {
     public TextMeshProUGUI countdownText;
     public GameObject panel;
 
     // Start is called before the first frame update
-    void Start()
-    {
-        
+    void Start() {
+
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
- 
+    void Update() {
+
+
     }
 
     public void Show() {
         panel.SetActive(true);
-    } 
+    }
 
     public void Hide() {
         panel.SetActive(false);

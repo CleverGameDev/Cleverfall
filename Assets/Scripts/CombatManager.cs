@@ -2,21 +2,18 @@
 using UnityEngine;
 using UnityEngine.Assertions;
 
-public class CombatManager : MonoBehaviour
-{    
+public class CombatManager : MonoBehaviour {
     float roundLength = 45; // seconds
-    float currCountdownValue; 
+    float currCountdownValue;
 
     CombatGUI combatGUI;
     EndCombatUI endCombatUI;
 
-    void Awake()
-    {
+    void Awake() {
         Debug.Log("CombatManager:Awake()");
         // Spawn a avatar for each human player
         GameObject[] players = GameObject.FindGameObjectsWithTag("HumanPlayer");
-        for (int i = 0; i < players.Length; i++)
-        {
+        for (int i = 0; i < players.Length; i++) {
             HumanPlayer hp = players[i].GetComponent<HumanPlayer>();
             hp.SetupCombat();
         }
@@ -43,9 +40,8 @@ public class CombatManager : MonoBehaviour
         // ... if only 1 survivor: they win
         // ... if 0 survivors: draw
     }
-    
-    public IEnumerator startCountdown(float countdownValue)
-    {
+
+    public IEnumerator startCountdown(float countdownValue) {
         currCountdownValue = countdownValue;
         while (true) {
             Debug.Log("Countdown: " + currCountdownValue);
@@ -53,7 +49,7 @@ public class CombatManager : MonoBehaviour
             if (currCountdownValue <= 0) {
                 break;
             }
-            
+
             yield return new WaitForSeconds(1.0f);
             currCountdownValue--;
         }
@@ -67,13 +63,12 @@ public class CombatManager : MonoBehaviour
         combatGUI.Hide();
         endCombatUI.Show();
     }
-   
+
     void OnDestroy() {
         Debug.Log("CombatManager:OnDestroy()");
         // Cleanup player avatars
         GameObject[] players = GameObject.FindGameObjectsWithTag("HumanPlayer");
-        for (int i = 0; i < players.Length; i++)
-        {
+        for (int i = 0; i < players.Length; i++) {
             HumanPlayer hp = players[i].GetComponent<HumanPlayer>();
             hp.CleanupCombat();
         }

@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EndCombatUI : MonoBehaviour
-{
+public class EndCombatUI : MonoBehaviour {
 
     public GameObject panel;
 

@@ -5,8 +5,7 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class CharacterSelect : MonoBehaviour
-{
+public class CharacterSelect : MonoBehaviour {
     [SerializeField, Tooltip("UI to choose player")]
     public PlayerChooser[] choosers;
 
@@ -26,31 +25,29 @@ public class CharacterSelect : MonoBehaviour
     Color32 gray = new Color32(150, 150, 150, 150);
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
 
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         // Show character selection for each active player
         // TODO: Rather than computing this in the UpdateLoop, 
         //      change this to only update on player JOIN or LEAVE event
         HumanPlayer[] players = getHumanPlayers();
-        for (int i=0; i < MAX_PLAYERS; i++) {
+        for (int i = 0; i < MAX_PLAYERS; i++) {
             // Set the text
             TextMeshProUGUI c = choosers[i].GetComponent<TextMeshProUGUI>();
             if (i < players.Length) {
                 // active players
                 HumanPlayer hp = players[i];
-                string character =  hp.GetCharacter();
-                c.text = hp.GetCharacter() + "\n\n(P" + (i+1) + ")";
+                string character = hp.GetCharacter();
+                c.text = hp.GetCharacter() + "\n\n(P" + (i + 1) + ")";
                 c.color = hp.GetCharacterConfirmed() ? green : white;
 
             } else {
                 // inactive (not yet joined) players
-                c.text = "(P" + (i+1) + ")";
+                c.text = "(P" + (i + 1) + ")";
                 c.color = gray;
             }
         }
@@ -65,25 +62,23 @@ public class CharacterSelect : MonoBehaviour
             nextButton.gameObject.SetActive(allReady());
             if (allReady()) {
                 // TODO: Figure out why it's sometimes not showing the proper highlighted state,
-                 // but *does* seem to be getting selected.
-                 // Without the below line, I'm unable to interact with the button.
+                // but *does* seem to be getting selected.
+                // Without the below line, I'm unable to interact with the button.
                 nextButton.Select();
             }
             status.text = "Press START/ENTER to continue";
         }
     }
 
-    
+
     private void OnEnable() {
-        foreach (var player in getHumanPlayers())
-        {
+        foreach (var player in getHumanPlayers()) {
             player.SetupCharacterSelect();
         }
     }
 
     private void OnDisable() {
-        foreach (var player in getHumanPlayers())
-        {
+        foreach (var player in getHumanPlayers()) {
             player.CleanupCharacterSelect();
         }
     }
@@ -91,8 +86,7 @@ public class CharacterSelect : MonoBehaviour
     private HumanPlayer[] getHumanPlayers() {
         GameObject[] players = GameObject.FindGameObjectsWithTag("HumanPlayer");
         HumanPlayer[] hps = new HumanPlayer[players.Length];
-        for (int i = 0; i < players.Length; i++)
-        {
+        for (int i = 0; i < players.Length; i++) {
             hps[i] = players[i].GetComponent<HumanPlayer>();
         }
         return hps;
@@ -109,8 +103,7 @@ public class CharacterSelect : MonoBehaviour
     private bool allReady() {
         // every character must be confirmed before we're all ready
         HumanPlayer[] hps = getHumanPlayers();
-        for (int i = 0; i < hps.Length; i++)
-        {
+        for (int i = 0; i < hps.Length; i++) {
             if (!hps[i].GetCharacterConfirmed()) {
                 return false;
             }
