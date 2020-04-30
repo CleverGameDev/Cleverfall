@@ -56,6 +56,13 @@ public class HumanPlayer : MonoBehaviour {
         deaths += 1;
     }
 
+    public int GetKills() {
+        return kills;
+    }
+    public int GetDeaths() {
+        return deaths;
+    }
+
     // setup
     public void SetupCombat() {
         spawnAvatar();
