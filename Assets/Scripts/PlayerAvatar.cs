@@ -18,6 +18,8 @@ public class PlayerAvatar : MonoBehaviour {
 
     private GameObject[] spawns;
 
+    private HumanPlayer humanPlayer;
+
     private float m_xChange;
     private float m_yChange;
     private bool m_isJumping;
@@ -38,7 +40,6 @@ public class PlayerAvatar : MonoBehaviour {
     void Update() {
         this.handleMovement();
         this.handleWraparound();
-        this.handleDeath();
     }
 
     void respawn() {
@@ -101,14 +102,23 @@ public class PlayerAvatar : MonoBehaviour {
         }
     }
 
-    private void handleDeath() {
+    private void takeDamage(int amount, GameObject source) {
+        this.hitpoints -= amount;
         if (this.hitpoints <= 0) {
-            this.Die();
+            // Die!
+            this.humanPlayer.AddDeath();
+            Destroy(gameObject);
+
+            // Give a kill to whoever pwn'd this player
+            PlayerAvatar killer = source.GetComponent<PlayerAvatar>();
+            if (killer != null) {
+                killer.humanPlayer.AddKill();
+            }
         }
     }
 
-    public void Die() {
-        Destroy(gameObject);
+    public void SetHumanPlayer(HumanPlayer hp) {
+        humanPlayer = hp;
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
@@ -130,7 +140,7 @@ public class PlayerAvatar : MonoBehaviour {
                 rb.velocity = Vector2.up * 2.5f;
             }
             if (colliderDistance.normal == Vector2.down) {
-                this.hitpoints -= 1;
+                takeDamage(1, other.gameObject);
             }
         }
     }
@@ -141,7 +151,6 @@ public class PlayerAvatar : MonoBehaviour {
     // Passing down events from HumanPlayer
     public void _onMove(InputValue value) {
         this.m_xChange = value.Get<Vector2>().x;
-        Debug.Log("Avatar:m_xChange .. " + m_xChange + " .. " + this.m_xChange);
         this.m_yChange = value.Get<Vector2>().y;
     }
 

@@ -22,6 +22,10 @@ public class HumanPlayer : MonoBehaviour {
     private int selectedCharacterIdx = 0;
     bool characterConfirmed = false;
 
+    // Combat stats
+    private int kills = 0;
+    private int deaths = 0;
+
     // Start is called before the first frame update
     void Start() {
         Debug.Log("Player joined: " + playerInput.playerIndex);
@@ -37,9 +41,28 @@ public class HumanPlayer : MonoBehaviour {
     ////////////////////////////
     // Combat (core Gameplay)
     ////////////////////////////
+
+    // What do we need to track during the combat for a player?
+    // - Avatar
+    // - Combat stats: kills, deaths 
+    // - GUI related to the player: health, lives remaining
+
+    public void AddKill() {
+        Debug.Log("Player" + playerInput.playerIndex + " got a kill!");
+        kills += 1;
+    }
+    public void AddDeath() {
+        Debug.Log("Player" + playerInput.playerIndex + " died");
+        deaths += 1;
+    }
+
     // setup
     public void SetupCombat() {
         spawnAvatar();
+
+        // Reset combat stats
+        kills = 0;
+        deaths = 0;
 
         // Stop listening for menu events
         playerInput.SwitchCurrentActionMap("Combat");
@@ -47,11 +70,15 @@ public class HumanPlayer : MonoBehaviour {
 
     void spawnAvatar() {
         playerAvatar = Instantiate(playerAvatarPrefab);
+        HumanPlayer hp = this.GetComponent<HumanPlayer>();
+        playerAvatar.GetComponent<PlayerAvatar>().SetHumanPlayer(hp);
+
         // Set bg color
         SpriteRenderer ren = playerAvatar.GetComponent<SpriteRenderer>();
         ren.material.SetColor("_Color", getPlayerColor());
     }
 
+    // TODO: Move this to the avatar creation
     private Color getPlayerColor() {
         switch (GetCharacter()) {
             case "joy":
