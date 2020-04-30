@@ -6,8 +6,9 @@ public class CombatManager : MonoBehaviour {
     float roundLength = 45; // seconds
     float currCountdownValue;
 
-    CombatGUI combatGUI;
-    EndCombatUI endCombatUI;
+    public CombatGUI combatGUI;
+    public EndCombatUI endCombatUI;
+    public PauseMenu pauseMenu;
 
     void Awake() {
         Debug.Log("CombatManager:Awake()");
@@ -17,12 +18,6 @@ public class CombatManager : MonoBehaviour {
             HumanPlayer hp = players[i].GetComponent<HumanPlayer>();
             hp.SetupCombat();
         }
-
-        // Get references to other prefab-instances, which can't be set via editor
-        combatGUI = GameObject.Find("CombatGUI").GetComponent<CombatGUI>();
-        Assert.IsNotNull(combatGUI);
-        endCombatUI = GameObject.Find("EndCombatUI").GetComponent<EndCombatUI>();
-        Assert.IsNotNull(endCombatUI);
 
         startCombat();
     }
