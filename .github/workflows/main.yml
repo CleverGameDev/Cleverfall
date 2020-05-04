@@ -1,0 +1,63 @@
+name: Actions 😎
+
+on:
+  pull_request: {}
+  push: { branches: [master] }
+
+env:
+  UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+
+jobs:
+  test:
+    name: Test ✨
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          lfs: true
+      # Cache
+      - uses: actions/cache@v1.1.2
+        with:
+          path: Library
+          key: Library
+
+      # Test
+      - name: Run tests
+        uses: webbertakken/unity-test-runner@v1.6
+        with:
+          unityVersion: 2019.3.0f6
+  build:
+    name: Build for ${{ matrix.targetPlatform }} on version ${{ matrix.unityVersion }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        unityVersion:
+          - 2019.3.0f6
+        targetPlatform:
+          - StandaloneOSX # Build a macOS standalone (Intel 64-bit).
+          - StandaloneWindows64 # Build a Windows 64-bit standalone.
+          - WebGL # WebGL.
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          lfs: true
+      - uses: actions/cache@v1.1.2
+        with:
+          path: ${{ matrix.projectPath }}/Library
+          key: Library-${{ matrix.projectPath }}-${{ matrix.targetPlatform }}
+          restore-keys: |
+            Library-${{ matrix.projectPath }}-
+            Library-
+      - uses: webbertakken/unity-builder@v0.12
+        with:
+          projectPath: ${{ matrix.projectPath }}
+          unityVersion: ${{ matrix.unityVersion }}
+          targetPlatform: ${{ matrix.targetPlatform }}
+      - uses: actions/upload-artifact@v2
+        with:
+          name: Build
+          path: build
