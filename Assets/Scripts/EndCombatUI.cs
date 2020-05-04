@@ -10,8 +10,6 @@ public class EndCombatUI : MonoBehaviour {
 
     public GameObject panel;
 
-    const int MAX_PLAYERS = 4;
-
     public void Show() {
         panel.SetActive(true);
     }
@@ -24,16 +22,19 @@ public class EndCombatUI : MonoBehaviour {
         float bestScore = -1 * Mathf.Infinity;
         int winningPlayerIndex = -1;
 
-        for (int i = 0; i < humanPlayers.Length; i++) {
+        for (int i = 0; i < G.Instance.MAX_PLAYERS; i++) {
             if (humanPlayers[i] == null) {
+                // if null, that means the player isn't
                 playersStats[i].text = "";
-                // TODO: Do we want this? It will resize the layout
                 playersStats[i].gameObject.SetActive(false);
             } else {
                 int kills = humanPlayers[i].GetKills();
                 int deaths = humanPlayers[i].GetDeaths();
-                if ((kills - deaths) > bestScore) {
+                int score = kills - deaths;
+                if (score > bestScore) {
+                    // FUTURE: Handle ties
                     winningPlayerIndex = humanPlayers[i].playerInput.playerIndex;
+                    bestScore = score;
                 }
                 playersStats[i].text = "Player" + i + "\n" +
                    "\n" +

@@ -10,14 +10,13 @@ public class CombatManager : MonoBehaviour {
     public EndCombatUI endCombatUI;
     public PauseMenu pauseMenu;
 
-    const int MAX_PLAYERS = 4;
     HumanPlayer[] humanPlayers;
 
     void Awake() {
         Debug.Log("CombatManager:Awake()");
         // Spawn a avatar for each human player
         GameObject[] players = GameObject.FindGameObjectsWithTag("HumanPlayer");
-        humanPlayers = new HumanPlayer[MAX_PLAYERS];
+        humanPlayers = new HumanPlayer[G.Instance.MAX_PLAYERS];
         for (int i = 0; i < players.Length; i++) {
             HumanPlayer hp = players[i].GetComponent<HumanPlayer>();
             humanPlayers[i] = hp;
