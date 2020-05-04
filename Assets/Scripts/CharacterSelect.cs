@@ -18,7 +18,6 @@ public class CharacterSelect : MonoBehaviour {
     [SerializeField]
     public Button backButton;
 
-    const int MAX_PLAYERS = 4; // This is a property of the PlayerInputManager, as well
 
     Color32 green = new Color32(0, 255, 0, 255);
     Color32 white = new Color32(255, 255, 255, 255);
@@ -35,7 +34,7 @@ public class CharacterSelect : MonoBehaviour {
         // TODO: Rather than computing this in the UpdateLoop, 
         //      change this to only update on player JOIN or LEAVE event
         HumanPlayer[] players = getHumanPlayers();
-        for (int i = 0; i < MAX_PLAYERS; i++) {
+        for (int i = 0; i < G.Instance.MAX_PLAYERS; i++) {
             // Set the text
             TextMeshProUGUI c = choosers[i].GetComponent<TextMeshProUGUI>();
             if (i < players.Length) {

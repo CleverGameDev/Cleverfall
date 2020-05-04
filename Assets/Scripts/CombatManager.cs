@@ -6,23 +6,22 @@ public class CombatManager : MonoBehaviour {
     float roundLength = 45; // seconds
     float currCountdownValue;
 
-    CombatGUI combatGUI;
-    EndCombatUI endCombatUI;
+    public CombatGUI combatGUI;
+    public EndCombatUI endCombatUI;
+    public PauseMenu pauseMenu;
+
+    HumanPlayer[] humanPlayers;
 
     void Awake() {
         Debug.Log("CombatManager:Awake()");
         // Spawn a avatar for each human player
         GameObject[] players = GameObject.FindGameObjectsWithTag("HumanPlayer");
+        humanPlayers = new HumanPlayer[G.Instance.MAX_PLAYERS];
         for (int i = 0; i < players.Length; i++) {
             HumanPlayer hp = players[i].GetComponent<HumanPlayer>();
+            humanPlayers[i] = hp;
             hp.SetupCombat();
         }
-
-        // Get references to other prefab-instances, which can't be set via editor
-        combatGUI = GameObject.Find("CombatGUI").GetComponent<CombatGUI>();
-        Assert.IsNotNull(combatGUI);
-        endCombatUI = GameObject.Find("EndCombatUI").GetComponent<EndCombatUI>();
-        Assert.IsNotNull(endCombatUI);
 
         startCombat();
     }
@@ -61,6 +60,7 @@ public class CombatManager : MonoBehaviour {
         Debug.Log("CombatManager:EndCombat()");
 
         combatGUI.Hide();
+        endCombatUI.UpdateStats(humanPlayers);
         endCombatUI.Show();
     }
 
