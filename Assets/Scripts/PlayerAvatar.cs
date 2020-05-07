@@ -8,6 +8,7 @@ public class PlayerAvatar : MonoBehaviour {
     private BoxCollider2D boxCollider;
     private bool grounded;
     private int hitpoints;
+    private bool isDead;
 
     public float groundSpeed;
     public float jumpHeight;
@@ -15,6 +16,11 @@ public class PlayerAvatar : MonoBehaviour {
     public float walkAcceleration;
     public float airDeceleration;
     public float groundDeceleration;
+
+    public AudioSource[] jumpSounds;
+    public AudioSource takeDamageSound;
+    public AudioSource dieSound;
+    public AudioSource playerSpawnSound;
 
     private GameObject[] spawns;
 
@@ -38,11 +44,17 @@ public class PlayerAvatar : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+        if (isDead) {
+            return;
+        }
+
         this.handleMovement();
         this.handleWraparound();
     }
 
     void respawn() {
+        playerSpawnSound.Play();
+
         this.rb = this.GetComponent<Rigidbody2D>();
         this.boxCollider = this.GetComponent<BoxCollider2D>();
         this.grounded = false;
@@ -103,11 +115,15 @@ public class PlayerAvatar : MonoBehaviour {
     }
 
     private void takeDamage(int amount, GameObject source) {
+        takeDamageSound.Play();
+
         this.hitpoints -= amount;
         if (this.hitpoints <= 0) {
+            dieSound.Play();
+
             // Die!
             this.humanPlayer.AddDeath();
-            Destroy(gameObject);
+            StartCoroutine(scheduleForDestruction());
 
             // Give a kill to whoever pwn'd this player
             PlayerAvatar killer = source.GetComponent<PlayerAvatar>();
@@ -115,6 +131,20 @@ public class PlayerAvatar : MonoBehaviour {
                 killer.humanPlayer.AddKill();
             }
         }
+    }
+
+
+
+    // scheduleForDestruction 
+    // FUTURE: move all sound to a SoundManager, which exists independent of this
+    //         -or- don't use Destroy(gameObject) to manage killing of PlayerAvatar
+    public IEnumerator scheduleForDestruction() {
+        isDead = true;
+
+        // give time for death sounds to play (<1s)
+        // FUTURE: add a death animation
+        yield return new WaitForSeconds(0.2f);
+        Destroy(gameObject);
     }
 
     public void SetHumanPlayer(HumanPlayer hp) {
@@ -156,6 +186,7 @@ public class PlayerAvatar : MonoBehaviour {
 
     public void _onJump() {
         if (this.grounded) {
+            jumpSounds[Random.Range(0, jumpSounds.Length)].Play();
             this.m_isJumping = true;
         }
     }
