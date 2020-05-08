@@ -1,7 +1,7 @@
 name: Build 👷
 
 on:
-  push: { branches: [master] }
+  push: { branches: [master, split-up-ci] }
 
 env:
   UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
@@ -18,7 +18,7 @@ jobs:
         targetPlatform:
           - StandaloneOSX # Build a macOS standalone (Intel 64-bit).
           - StandaloneWindows64 # Build a Windows 64-bit standalone.
-          - WebGL # WebGL.
+          # - WebGL # WebGL.
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -53,8 +53,8 @@ jobs:
         with:
           tag_name: ${{ github.ref }}
           release_name: Release ${{ github.ref }}
-          draft: false
-          prerelease: false
+          draft: true
+          prerelease: true
       - name: Upload Release Asset
         id: upload-release-asset
         uses: actions/upload-release-asset@v1
