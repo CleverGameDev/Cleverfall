@@ -8,7 +8,6 @@ public class PlayerAvatar : MonoBehaviour {
     private BoxCollider2D boxCollider;
     private bool grounded;
     private int hitpoints;
-    private bool isDead;
 
     public float groundSpeed;
     public float jumpHeight;
@@ -44,7 +43,7 @@ public class PlayerAvatar : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (isDead) {
+        if (isDead()) {
             return;
         }
 
@@ -133,14 +132,14 @@ public class PlayerAvatar : MonoBehaviour {
         }
     }
 
-
+    private bool isDead() {
+        return hitpoints <= 0;
+    }
 
     // scheduleForDestruction 
     // FUTURE: move all sound to a SoundManager, which exists independent of this
     //         -or- don't use Destroy(gameObject) to manage killing of PlayerAvatar
     public IEnumerator scheduleForDestruction() {
-        isDead = true;
-
         // give time for death sounds to play (<1s)
         // FUTURE: add a death animation
         yield return new WaitForSeconds(0.2f);
