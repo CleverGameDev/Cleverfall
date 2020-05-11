@@ -113,7 +113,7 @@ public class PlayerAvatar : MonoBehaviour {
         }
     }
 
-    private void takeDamage(int amount, GameObject source) {
+    public void TakeDamage(int amount, GameObject source) {
         takeDamageSound.Play();
 
         this.hitpoints -= amount;
@@ -169,7 +169,7 @@ public class PlayerAvatar : MonoBehaviour {
                 rb.velocity = Vector2.up * 2.5f;
             }
             if (colliderDistance.normal == Vector2.down) {
-                takeDamage(1, other.gameObject);
+                TakeDamage(1, other.gameObject);
             }
         }
     }
