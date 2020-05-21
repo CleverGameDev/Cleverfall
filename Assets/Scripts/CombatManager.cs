@@ -43,7 +43,6 @@ public class CombatManager : MonoBehaviour {
     public IEnumerator startCountdown(float countdownValue) {
         currCountdownValue = countdownValue;
         while (true) {
-            Debug.Log("Countdown: " + currCountdownValue);
             combatGUI.SetTimeRemaining(currCountdownValue);
             if (currCountdownValue <= 0) {
                 break;
