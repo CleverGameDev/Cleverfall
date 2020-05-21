@@ -131,7 +131,8 @@ public class PlayerAvatar : MonoBehaviour {
         // TODO: more consistent raycast logic needed
         ColliderDistance2D colliderDistance = other.collider.Distance(boxCollider);
 
-        // if collision cases an overlap, move the object so that it's no longer overlapping
+        // if collision causes an overlap, move the object so that it's no longer overlapping
+
         if (colliderDistance.isOverlapped) {
             transform.Translate(colliderDistance.pointA - colliderDistance.pointB);
         }
