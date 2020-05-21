@@ -29,13 +29,6 @@ public class PlayerAvatar : MonoBehaviour {
     private float m_yChange;
     private bool m_isJumping;
 
-    // [PN] TODO: make these constraints flexible depending on stage
-    private const float leftConstraint = -9.4f;
-    private const float rightConstraint = 9.4f;
-    private const float bottomConstraint = -4.6f;
-    private const float topConstraint = 4.6f;
-    private const float buffer = 0.1f;
-
     // Start is called before the first frame update
     void Start() {
         respawn();
@@ -48,7 +41,6 @@ public class PlayerAvatar : MonoBehaviour {
         }
 
         this.handleMovement();
-        this.handleWraparound();
     }
 
     void respawn() {
@@ -66,6 +58,7 @@ public class PlayerAvatar : MonoBehaviour {
     }
 
     protected void handleMovement() {
+        // TODO: try to figure out what causes the "jittering avatar" bug
         float acceleration = walkAcceleration;
         float deceleration = groundDeceleration;
 
@@ -81,7 +74,7 @@ public class PlayerAvatar : MonoBehaviour {
             velocityY = 0;
             if (this.m_isJumping) {
                 velocityY = Mathf.Sqrt(2 * jumpHeight * Mathf.Abs(Physics2D.gravity.y));
-                velocityY += Physics2D.gravity.y * Time.deltaTime;
+                velocityY += Physics2D.gravity.y * Time.deltaTime; // TODO: have a max velocityY so it doesn't go crazy if player loops from top to bottom of level over and over
 
                 // don't allow a jump input to queue up
                 // for immediately after the player lands
@@ -95,22 +88,6 @@ public class PlayerAvatar : MonoBehaviour {
         }
         rb.velocity = new Vector2(velocityX, velocityY);
         transform.Translate(rb.velocity * Time.deltaTime);
-    }
-
-    private void handleWraparound() {
-        // Handle wraparound on the x-axis
-        if (transform.position.x < leftConstraint - buffer) {
-            transform.position = new Vector3(rightConstraint + buffer, transform.position.y, transform.position.z);
-        } else if (transform.position.x > rightConstraint + buffer) {
-            transform.position = new Vector3(leftConstraint - buffer, transform.position.y, transform.position.z);
-        }
-
-        // Handle wraparound on the y-axis
-        if (transform.position.y < bottomConstraint - buffer) {
-            transform.position = new Vector3(transform.position.x, topConstraint + buffer, transform.position.z);
-        } else if (transform.position.y > topConstraint + buffer) {
-            transform.position = new Vector3(transform.position.x, bottomConstraint - buffer, transform.position.z);
-        }
     }
 
     public void TakeDamage(int amount, GameObject source) {
@@ -154,6 +131,7 @@ public class PlayerAvatar : MonoBehaviour {
         // TODO: more consistent raycast logic needed
         ColliderDistance2D colliderDistance = other.collider.Distance(boxCollider);
 
+        // if collision cases an overlap, move the object so that it's no longer overlapping
         if (colliderDistance.isOverlapped) {
             transform.Translate(colliderDistance.pointA - colliderDistance.pointB);
         }
