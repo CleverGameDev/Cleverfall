@@ -3,7 +3,7 @@ using UnityEngine.Assertions;
 
 public class Wraparound : MonoBehaviour {
 
-    private const float wraparoundBuffer = 0.1f;
+    private const float wraparoundBuffer = 0.01f;
 
     private CompositeCollider2D cc;
 
@@ -22,11 +22,11 @@ public class Wraparound : MonoBehaviour {
             if (Mathf.Abs(colliderDistance.normal.x) > Mathf.Abs(colliderDistance.normal.y)) {
                 // wrap around horizontally
                 float buf = (wraparoundBuffer * Mathf.Sign(colliderDistance.normal.x));
-                other.transform.position = new Vector3(-1 * (p.x + buf), p.y, p.z);
+                other.transform.position = new Vector3(-1 * (p.x - buf), p.y, p.z);
             } else {
                 // wrap around vertically
                 float buf = wraparoundBuffer * Mathf.Sign(colliderDistance.normal.y);
-                other.transform.position = new Vector3(p.x, -1 * (p.y + buf), p.z);
+                other.transform.position = new Vector3(p.x, -1 * (p.y - buf), p.z);
             }
         }
     }
