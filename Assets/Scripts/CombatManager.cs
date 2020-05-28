@@ -9,7 +9,9 @@ public class CombatManager : MonoBehaviour {
 
     public CombatGUI combatGUI;
     public EndCombatUI endCombatUI;
-    public PauseMenu pauseMenu;
+
+    public PauseMenu pauseMenuPrefab;
+    private PauseMenu pauseMenu;
 
     public AudioClip backgroundMusic;
 
@@ -98,9 +100,12 @@ public class CombatManager : MonoBehaviour {
     public void Pause(bool b) {
         isPaused = b;
         Time.timeScale = isPaused ? 0f : 1f;
-        pauseMenu.Show(b);
+        if (b) {
+            pauseMenu = Instantiate(pauseMenuPrefab);
+        } else {
+            Destroy(pauseMenu.gameObject);
+        }
     }
-
 
     // IsPaused 
     public bool IsPaused() {
