@@ -6,3 +6,7 @@ We have configuration in place to format our C# code on save. If this does not w
 2. Search for "Format on Save", and check the box.
 
 [Source](https://code.visualstudio.com/docs/getstarted/settings) and [source](https://stackoverflow.com/questions/39494277/how-do-you-format-code-on-save-in-vs-code)
+
+### External Asset Credits
+
+Start Menu music and Enemy Approaching music are both by Toby Fox, from the game Undertale. 

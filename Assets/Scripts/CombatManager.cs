@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.Assertions;
 
+[RequireComponent(typeof(AudioSource))]
 public class CombatManager : MonoBehaviour {
     float roundLength = 45; // seconds
     float currCountdownValue;
@@ -9,6 +10,10 @@ public class CombatManager : MonoBehaviour {
     public CombatGUI combatGUI;
     public EndCombatUI endCombatUI;
     public PauseMenu pauseMenu;
+
+    public AudioClip backgroundMusic;
+
+    private AudioSource _audio;
 
     HumanPlayer[] humanPlayers;
 
@@ -22,6 +27,9 @@ public class CombatManager : MonoBehaviour {
             humanPlayers[i] = hp;
             hp.SetupCombat();
         }
+
+        _audio = this.GetComponent<AudioSource>();
+        _audio.clip = backgroundMusic;
 
         startCombat();
     }
@@ -38,6 +46,8 @@ public class CombatManager : MonoBehaviour {
         // if exactly <=1 player has >0 lives then round over!
         // ... if only 1 survivor: they win
         // ... if 0 survivors: draw
+
+        _audio.Play();
     }
 
     public IEnumerator startCountdown(float countdownValue) {
@@ -61,6 +71,8 @@ public class CombatManager : MonoBehaviour {
         combatGUI.Hide();
         endCombatUI.UpdateStats(humanPlayers);
         endCombatUI.Show();
+
+        _audio.Stop();
     }
 
     void OnDestroy() {
