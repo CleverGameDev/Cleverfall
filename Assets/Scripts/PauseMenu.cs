@@ -1,33 +1,36 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour {
-    public static bool GameIsPaused = false;
-    public GameObject pauseMenuUI;
 
-    // Sets the pause state to the opposite of the current state
-    public void TogglePause() {
-        pause(!GameIsPaused);
+    private CombatManager cm;
+
+    void Awake() {
+        cm = GameObject.Find("CombatManager").GetComponent<CombatManager>();
     }
 
-    private void pause(bool isPaused) {
-        pauseMenuUI.SetActive(isPaused);
-        GameIsPaused = isPaused;
-        Time.timeScale = isPaused ? 0f : 1f;
+    public void Resume() {
+        cleanup();
     }
 
-    // Restart
     public void Restart() {
-        pause(false);
         int currentScene = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentScene);
+
+        cleanup();
     }
 
-    // Quit
     public void QuitToMainMenu() {
-        pause(false);
         SceneManager.LoadScene("Menu");
+
+        cleanup();
+    }
+
+    // The combat manager is responsible for toggling gameplay pause behaviors, 
+    // and show/hiding this UI
+    //
+    // We call this last because the CombatManager destroys this gameObject when done
+    private void cleanup() {
+        cm.Pause(false);
     }
 }

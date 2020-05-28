@@ -8,12 +8,16 @@ public class CombatManager : MonoBehaviour {
     float currCountdownValue;
 
     public CombatGUI combatGUI;
-    public EndCombatUI endCombatUI;
-    public PauseMenu pauseMenu;
+    public EndCombatUI endCombatUIPrefab;
+    private EndCombatUI endCombatUI;
+
+    public PauseMenu pauseMenuPrefab;
+    private PauseMenu pauseMenu;
 
     public AudioClip backgroundMusic;
 
     private AudioSource _audio;
+    private bool combatIsOver = false;
 
     HumanPlayer[] humanPlayers;
 
@@ -25,7 +29,7 @@ public class CombatManager : MonoBehaviour {
         for (int i = 0; i < players.Length; i++) {
             HumanPlayer hp = players[i].GetComponent<HumanPlayer>();
             humanPlayers[i] = hp;
-            hp.SetupCombat();
+            hp.SetupCombat(this);
         }
 
         _audio = this.GetComponent<AudioSource>();
@@ -36,8 +40,9 @@ public class CombatManager : MonoBehaviour {
 
     // startCombat sets up victory conditions for combat
     void startCombat() {
+        Debug.Log("CombatManager:startCombat()");
+        combatIsOver = false;
         combatGUI.Show();
-        endCombatUI.Hide();
 
         // One end condition is a timer, and the player with the most kills wins
         StartCoroutine(startCountdown(roundLength));
@@ -66,22 +71,64 @@ public class CombatManager : MonoBehaviour {
     }
 
     void endCombat() {
-        Debug.Log("CombatManager:EndCombat()");
+        Debug.Log("CombatManager:endCombat()");
+        combatIsOver = true;
+
+        Pause(true); // stop combat from running and further game interaction
 
         combatGUI.Hide();
+
+        endCombatUI = Instantiate(endCombatUIPrefab);
         endCombatUI.UpdateStats(humanPlayers);
-        endCombatUI.Show();
 
         _audio.Stop();
     }
 
     void OnDestroy() {
         Debug.Log("CombatManager:OnDestroy()");
-        // Cleanup player avatars
         GameObject[] players = GameObject.FindGameObjectsWithTag("HumanPlayer");
         for (int i = 0; i < players.Length; i++) {
             HumanPlayer hp = players[i].GetComponent<HumanPlayer>();
             hp.CleanupCombat();
         }
+    }
+
+    ////////////////////
+    // Pause
+    ////////////////////
+    private bool isPaused = false;
+    // TogglePause sets isPaused to the opposite of its current value
+    public void TogglePause() {
+        Pause(!isPaused);
+    }
+
+    // Pause sets isPaused value explicitly 
+    public void Pause(bool b) {
+        isPaused = b;
+        Time.timeScale = isPaused ? 0f : 1f;
+
+        // Toggle player input on/off, so you can't e.g. send a "jump" event when
+        // you're looking at the PauseMenu or EndOfCombat UI
+        GameObject[] players = GameObject.FindGameObjectsWithTag("HumanPlayer");
+        for (int i = 0; i < players.Length; i++) {
+            HumanPlayer hp = players[i].GetComponent<HumanPlayer>();
+            hp.EnablePlayerInput(!isPaused);
+        }
+
+        if (!combatIsOver) {
+            // While we're in the combat, show/hide the PauseMenu
+            if (b) {
+                pauseMenu = Instantiate(pauseMenuPrefab);
+            } else {
+                if (pauseMenu != null) {
+                    Destroy(pauseMenu.gameObject);
+                }
+            }
+        }
+    }
+
+    // IsPaused 
+    public bool IsPaused() {
+        return isPaused;
     }
 }
