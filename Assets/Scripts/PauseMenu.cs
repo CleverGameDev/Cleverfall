@@ -4,30 +4,32 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour {
-    public static bool GameIsPaused = false;
-    public GameObject pauseMenuUI;
 
-    // Sets the pause state to the opposite of the current state
-    public void TogglePause() {
-        pause(!GameIsPaused);
+    public GameObject pauseMenuUI;
+    private CombatManager cm;
+
+    void Awake() {
+        cm = GameObject.Find("CombatManager").GetComponent<CombatManager>();
     }
 
-    private void pause(bool isPaused) {
-        pauseMenuUI.SetActive(isPaused);
-        GameIsPaused = isPaused;
-        Time.timeScale = isPaused ? 0f : 1f;
+    public void Show(bool b) {
+        pauseMenuUI.SetActive(b);
+    }
+
+    public void Resume() {
+        cm.Pause(false);
     }
 
     // Restart
     public void Restart() {
-        pause(false);
+        cm.Pause(false);
         int currentScene = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentScene);
     }
 
     // Quit
     public void QuitToMainMenu() {
-        pause(false);
+        cm.Pause(false);
         SceneManager.LoadScene("Menu");
     }
 }

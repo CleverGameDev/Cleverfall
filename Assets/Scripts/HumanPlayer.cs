@@ -12,6 +12,8 @@ public class HumanPlayer : MonoBehaviour {
     public GameObject playerAvatarPrefab;
     private GameObject playerAvatar;
 
+    private CombatManager combatManager;
+
     private string[] characters = {
         "joy",
         "sadness",
@@ -64,7 +66,8 @@ public class HumanPlayer : MonoBehaviour {
     }
 
     // setup
-    public void SetupCombat() {
+    public void SetupCombat(CombatManager cm) {
+        combatManager = cm;
         spawnAvatar();
 
         // Reset combat stats
@@ -130,7 +133,7 @@ public class HumanPlayer : MonoBehaviour {
     }
 
     private void OnMenu() {
-        GameObject.Find("PauseMenu").GetComponent<PauseMenu>().TogglePause();
+        combatManager.TogglePause();
     }
 
     //////////////////

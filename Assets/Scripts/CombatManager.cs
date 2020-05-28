@@ -25,7 +25,7 @@ public class CombatManager : MonoBehaviour {
         for (int i = 0; i < players.Length; i++) {
             HumanPlayer hp = players[i].GetComponent<HumanPlayer>();
             humanPlayers[i] = hp;
-            hp.SetupCombat();
+            hp.SetupCombat(this);
         }
 
         _audio = this.GetComponent<AudioSource>();
@@ -84,4 +84,28 @@ public class CombatManager : MonoBehaviour {
             hp.CleanupCombat();
         }
     }
+
+    ////////////////////
+    // Pause
+    ////////////////////
+    private bool isPaused = false;
+    // TogglePause sets isPaused to the opposite of its current value
+    public void TogglePause() {
+        Pause(!isPaused);
+    }
+
+    // Pause sets isPaused value explicitly 
+    public void Pause(bool b) {
+        isPaused = b;
+        Time.timeScale = isPaused ? 0f : 1f;
+        pauseMenu.Show(b);
+    }
+
+
+    // IsPaused 
+    public bool IsPaused() {
+        return isPaused;
+    }
+
+
 }
