@@ -139,6 +139,10 @@ public class HumanPlayer : MonoBehaviour {
         playerAvatar.GetComponent<PlayerAvatar>()._onJump();
     }
 
+    private void OnAttack() {
+        playerAvatar.GetComponent<PlayerAvatar>()._onFire();
+    }
+
     private void OnMenu() {
         combatManager.TogglePause();
     }
