@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
+
 
 public class EndCombatUI : MonoBehaviour {
 
@@ -9,14 +11,6 @@ public class EndCombatUI : MonoBehaviour {
     public TextMeshProUGUI[] playersStats;
 
     public GameObject panel;
-
-    public void Show() {
-        panel.SetActive(true);
-    }
-
-    public void Hide() {
-        panel.SetActive(false);
-    }
 
     public void UpdateStats(HumanPlayer[] humanPlayers) {
         float bestScore = -1 * Mathf.Infinity;
@@ -45,7 +39,7 @@ public class EndCombatUI : MonoBehaviour {
         winner.text = "Player" + winningPlayerIndex + " wins!";
     }
 
-
-
-
+    public void QuitToMainMenu() {
+        SceneManager.LoadScene("Menu");
+    }
 }

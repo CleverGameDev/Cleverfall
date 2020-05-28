@@ -8,7 +8,8 @@ public class CombatManager : MonoBehaviour {
     float currCountdownValue;
 
     public CombatGUI combatGUI;
-    public EndCombatUI endCombatUI;
+    public EndCombatUI endCombatUIPrefab;
+    private EndCombatUI endCombatUI;
 
     public PauseMenu pauseMenuPrefab;
     private PauseMenu pauseMenu;
@@ -42,7 +43,6 @@ public class CombatManager : MonoBehaviour {
         Debug.Log("CombatManager:startCombat()");
         combatIsOver = false;
         combatGUI.Show();
-        endCombatUI.Hide();
 
         // One end condition is a timer, and the player with the most kills wins
         StartCoroutine(startCountdown(roundLength));
@@ -77,8 +77,9 @@ public class CombatManager : MonoBehaviour {
         Pause(true); // stop combat from running and further game interaction
 
         combatGUI.Hide();
+
+        endCombatUI = Instantiate(endCombatUIPrefab);
         endCombatUI.UpdateStats(humanPlayers);
-        endCombatUI.Show();
 
         _audio.Stop();
     }
@@ -119,7 +120,9 @@ public class CombatManager : MonoBehaviour {
             if (b) {
                 pauseMenu = Instantiate(pauseMenuPrefab);
             } else {
-                Destroy(pauseMenu.gameObject);
+                if (pauseMenu != null) {
+                    Destroy(pauseMenu.gameObject);
+                }
             }
         }
     }
