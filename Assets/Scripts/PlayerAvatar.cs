@@ -31,9 +31,7 @@ public class PlayerAvatar : MonoBehaviour {
     private bool m_isJumping;
 
     public float fireDelay = 0.5F;
-
-    private GameObject newProjectile;
-    private float fireCooldown = 0.0F;
+    private bool canFire = true;
 
     // Start is called before the first frame update
     void Start() {
@@ -47,7 +45,6 @@ public class PlayerAvatar : MonoBehaviour {
         }
 
         this.handleMovement();
-        this.handleAttack();
     }
 
     void respawn() {
@@ -95,19 +92,6 @@ public class PlayerAvatar : MonoBehaviour {
         }
         rb.velocity = new Vector2(velocityX, velocityY);
         transform.Translate(rb.velocity * Time.deltaTime);
-    }
-
-    protected void handleAttack() {
-        fireCooldown = fireCooldown - Time.deltaTime;
-
-        Vector3 projectilePos = transform.position;
-        if (Input.GetButton("Fire1") && fireCooldown <= 0)
-        {
-            // Don't spawn right on top of player
-            projectilePos += new Vector3(1.0f, 0.0f, 0.0f);
-            newProjectile = Instantiate(projectilePrefab, projectilePos, Quaternion.identity) as GameObject;
-            fireCooldown = fireDelay;
-        }
     }
 
     public void TakeDamage(int amount, GameObject source) {
@@ -187,5 +171,21 @@ public class PlayerAvatar : MonoBehaviour {
             jumpSounds[Random.Range(0, jumpSounds.Length)].Play();
             this.m_isJumping = true;
         }
+    }
+
+    public void _onFire() {
+        Vector3 projectilePos = transform.position;
+        if (canFire) {
+            // Don't spawn right on top of player
+            projectilePos += new Vector3(1.0f, 0.0f, 0.0f);
+            Instantiate(projectilePrefab, projectilePos, Quaternion.identity);
+            StartCoroutine(waitForFireCooldown());
+        }
+    }
+
+    private IEnumerator waitForFireCooldown() {
+        canFire = false;
+        yield return new WaitForSeconds(fireDelay);
+        canFire = true;
     }
 }
