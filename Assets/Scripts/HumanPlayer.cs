@@ -106,9 +106,16 @@ public class HumanPlayer : MonoBehaviour {
         }
     }
 
+    public void EnablePlayerInput(bool b) {
+        if (b) {
+            playerInput.currentActionMap.Enable();
+        } else {
+            playerInput.currentActionMap.Disable();
+        }
+    }
+
     public void CleanupCombat() {
-        // Stop listening for Combat events
-        playerInput.currentActionMap.Disable();
+        EnablePlayerInput(false);
         Destroy(playerAvatar);
     }
 

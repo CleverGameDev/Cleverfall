@@ -16,6 +16,7 @@ public class CombatManager : MonoBehaviour {
     public AudioClip backgroundMusic;
 
     private AudioSource _audio;
+    private bool combatIsOver = false;
 
     HumanPlayer[] humanPlayers;
 
@@ -38,6 +39,8 @@ public class CombatManager : MonoBehaviour {
 
     // startCombat sets up victory conditions for combat
     void startCombat() {
+        Debug.Log("CombatManager:startCombat()");
+        combatIsOver = false;
         combatGUI.Show();
         endCombatUI.Hide();
 
@@ -68,7 +71,10 @@ public class CombatManager : MonoBehaviour {
     }
 
     void endCombat() {
-        Debug.Log("CombatManager:EndCombat()");
+        Debug.Log("CombatManager:endCombat()");
+        combatIsOver = true;
+
+        Pause(true); // stop combat from running and further game interaction
 
         combatGUI.Hide();
         endCombatUI.UpdateStats(humanPlayers);
@@ -79,7 +85,6 @@ public class CombatManager : MonoBehaviour {
 
     void OnDestroy() {
         Debug.Log("CombatManager:OnDestroy()");
-        // Cleanup player avatars
         GameObject[] players = GameObject.FindGameObjectsWithTag("HumanPlayer");
         for (int i = 0; i < players.Length; i++) {
             HumanPlayer hp = players[i].GetComponent<HumanPlayer>();
@@ -100,10 +105,22 @@ public class CombatManager : MonoBehaviour {
     public void Pause(bool b) {
         isPaused = b;
         Time.timeScale = isPaused ? 0f : 1f;
-        if (b) {
-            pauseMenu = Instantiate(pauseMenuPrefab);
-        } else {
-            Destroy(pauseMenu.gameObject);
+
+        // Toggle player input on/off, so you can't e.g. send a "jump" event when
+        // you're looking at the PauseMenu or EndOfCombat UI
+        GameObject[] players = GameObject.FindGameObjectsWithTag("HumanPlayer");
+        for (int i = 0; i < players.Length; i++) {
+            HumanPlayer hp = players[i].GetComponent<HumanPlayer>();
+            hp.EnablePlayerInput(!isPaused);
+        }
+
+        if (!combatIsOver) {
+            // While we're in the combat, show/hide the PauseMenu
+            if (b) {
+                pauseMenu = Instantiate(pauseMenuPrefab);
+            } else {
+                Destroy(pauseMenu.gameObject);
+            }
         }
     }
 
@@ -111,6 +128,4 @@ public class CombatManager : MonoBehaviour {
     public bool IsPaused() {
         return isPaused;
     }
-
-
 }
