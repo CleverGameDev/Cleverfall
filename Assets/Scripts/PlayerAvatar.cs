@@ -25,7 +25,6 @@ public class PlayerAvatar : MonoBehaviour {
     private GameObject[] spawns;
 
     private HumanPlayer humanPlayer;
-    private GameObject projectile;
 
     private float m_xChange;
     private float m_yChange;
