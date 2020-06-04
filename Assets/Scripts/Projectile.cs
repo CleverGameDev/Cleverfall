@@ -4,20 +4,14 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour {
 	public float xVel;
-	public bool isRight;
-	float yVel = 0.0f;
 	Rigidbody2D rb;
 
 	void Start() {
 		rb = GetComponent<Rigidbody2D>();
 	}
 
-	void Update() {
-		if (isRight) {
-			rb.velocity = new Vector2(xVel, yVel);
-		} else {
-			rb.velocity = new Vector2(-1 * xVel, yVel);
-		}
+	public void Initialize(Vector2 direction) {
+		rb.velocity = direction * xVel;
 	}
 
 	private void OnCollisionEnter2D(Collision2D other) {
