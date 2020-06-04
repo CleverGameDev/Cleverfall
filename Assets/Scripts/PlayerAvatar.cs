@@ -25,10 +25,12 @@ public class PlayerAvatar : MonoBehaviour {
     private GameObject[] spawns;
 
     private HumanPlayer humanPlayer;
+    private GameObject projectile;
 
     private float m_xChange;
     private float m_yChange;
     private bool m_isJumping;
+    private Vector2 m_lastDirection;
 
     public float fireDelay = 0.5F;
     private bool canFire = true;
@@ -164,6 +166,9 @@ public class PlayerAvatar : MonoBehaviour {
     public void _onMove(InputValue value) {
         this.m_xChange = value.Get<Vector2>().x;
         this.m_yChange = value.Get<Vector2>().y;
+        if (!value.Get<Vector2>().Equals(Vector2.zero)) {
+            this.m_lastDirection = value.Get<Vector2>();
+        }
     }
 
     public void _onJump() {
@@ -177,7 +182,7 @@ public class PlayerAvatar : MonoBehaviour {
         Vector3 projectilePos = transform.position;
         if (canFire) {
             // Don't spawn right on top of player
-            projectilePos += new Vector3(1.0f, 0.0f, 0.0f);
+            projectilePos += new Vector3(this.m_lastDirection.x, this.m_lastDirection.y, 0.0f);
             Instantiate(projectilePrefab, projectilePos, Quaternion.identity);
             StartCoroutine(waitForFireCooldown());
         }
