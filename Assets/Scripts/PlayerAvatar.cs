@@ -9,7 +9,7 @@ public class PlayerAvatar : MonoBehaviour {
     private bool grounded;
     private int hitpoints;
 
-    public GameObject projectilePrefab;
+    public GameObject[] projectilePrefabs;
     public float groundSpeed;
     public float jumpHeight;
     public float airAcceleration;
@@ -25,6 +25,7 @@ public class PlayerAvatar : MonoBehaviour {
     private GameObject[] spawns;
 
     private HumanPlayer humanPlayer;
+    private GameObject projectile;
 
     private float m_xChange;
     private float m_yChange;
@@ -111,6 +112,11 @@ public class PlayerAvatar : MonoBehaviour {
             if (killer != null) {
                 killer.humanPlayer.AddKill();
             }
+            Projectile projectileKiller = source.GetComponent<Projectile>();
+            if (projectileKiller != null) {
+                projectileKiller.GetOwner().humanPlayer.AddKill();
+            }
+
         }
     }
 
@@ -182,7 +188,9 @@ public class PlayerAvatar : MonoBehaviour {
         if (canFire) {
             // Don't spawn right on top of player
             projectilePos += new Vector3(this.m_lastDirection.x, this.m_lastDirection.y, 0.0f);
-            Instantiate(projectilePrefab, projectilePos, Quaternion.identity);
+            projectile = Instantiate(projectilePrefabs[Random.Range(0, projectilePrefabs.Length)], projectilePos, Quaternion.identity) as GameObject;
+            projectile.GetComponent<Projectile>().SetDirection(this.m_lastDirection);
+            projectile.GetComponent<Projectile>().SetOwner(this.GetComponent<PlayerAvatar>());
             StartCoroutine(waitForFireCooldown());
         }
     }
