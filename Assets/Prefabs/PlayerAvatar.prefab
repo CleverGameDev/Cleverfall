@@ -53,8 +53,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 039327eb30236b94da9e5b4421b5f571, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 622568290232163043, guid: 1194d9ab4bc554beeb9094fe65b79cad,
-    type: 3}
+  projectilePrefabs:
+  - {fileID: 622568290232163043, guid: 1194d9ab4bc554beeb9094fe65b79cad, type: 3}
+  - {fileID: 622568290232163043, guid: 93fbf87f6a6104c94a7fbafffd67db04, type: 3}
+  - {fileID: 622568290232163043, guid: bf88a90bdc1704e59ad89b016ed090f1, type: 3}
   groundSpeed: 50
   jumpHeight: 2
   airAcceleration: 10
