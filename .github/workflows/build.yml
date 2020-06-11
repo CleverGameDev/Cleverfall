@@ -1,33 +1,12 @@
-name: Actions 😎
+name: Build
 
 on:
-  pull_request: {}
-  push: { branches: [master] }
+  push: { branches: [master, itchio-autopublish] }
 
 env:
   UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
 
 jobs:
-  test:
-    name: Test ✨
-    runs-on: ubuntu-latest
-    steps:
-      # Checkout
-      - name: Checkout repository
-        uses: actions/checkout@v2
-        with:
-          lfs: true
-      # Cache
-      - uses: actions/cache@v1.1.2
-        with:
-          path: Library
-          key: Library
-
-      # Test
-      - name: Run tests
-        uses: webbertakken/unity-test-runner@v1.6
-        with:
-          unityVersion: 2019.3.0f6
   build:
     name: Build for ${{ matrix.targetPlatform }} on version ${{ matrix.unityVersion }}
     runs-on: ubuntu-latest
@@ -37,9 +16,9 @@ jobs:
         unityVersion:
           - 2019.3.0f6
         targetPlatform:
-          - StandaloneOSX # Build a macOS standalone (Intel 64-bit).
+          # - StandaloneOSX # Build a macOS standalone (Intel 64-bit).
           - StandaloneWindows64 # Build a Windows 64-bit standalone.
-          - WebGL # WebGL.
+          # - WebGL # WebGL.
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -61,3 +40,11 @@ jobs:
         with:
           name: Build
           path: build
+      - name: Butler Push
+        uses: josephbmanley/butler-publish-itchio-action@v1.0.1
+        env:
+          BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
+          CHANNEL: ${{matrix.targetPlatform}
+          ITCH_GAME: cleverfall
+          ITCH_USER: clevergamedev
+          PACKAGE: build/${{matrix.targetPlatform}}
