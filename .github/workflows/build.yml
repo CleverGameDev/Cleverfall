@@ -1,7 +1,7 @@
 name: Build
 
 on:
-  push: { branches: [master, itchio-autopublish] }
+  push: { branches: [master] }
 
 env:
   UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
