@@ -45,7 +45,7 @@ jobs:
         uses: josephbmanley/butler-publish-itchio-action@v1.0.1
         env:
           BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
-          CHANNEL: ${{matrix.targetPlatform}
+          CHANNEL: ${{ matrix.targetPlatform }}
           ITCH_GAME: cleverfall
           ITCH_USER: clevergamedev
-          PACKAGE: build/${{matrix.targetPlatform}}
+          PACKAGE: build/${{ matrix.targetPlatform }}
