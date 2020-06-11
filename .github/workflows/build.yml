@@ -17,9 +17,9 @@ jobs:
         unityVersion:
           - 2019.3.0f6
         targetPlatform:
-          # - StandaloneOSX # Build a macOS standalone (Intel 64-bit).
+          - StandaloneOSX # Build a macOS standalone (Intel 64-bit).
           - StandaloneWindows64 # Build a Windows 64-bit standalone.
-          # - WebGL # WebGL.
+          - WebGL # WebGL.
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
