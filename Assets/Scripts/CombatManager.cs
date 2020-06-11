@@ -43,6 +43,7 @@ public class CombatManager : MonoBehaviour {
         Debug.Log("CombatManager:startCombat()");
         combatIsOver = false;
         combatGUI.Show();
+        Pause(false);
 
         // One end condition is a timer, and the player with the most kills wins
         StartCoroutine(startCountdown(roundLength));
@@ -97,12 +98,11 @@ public class CombatManager : MonoBehaviour {
     // Pause
     ////////////////////
     private bool isPaused = false;
-    // TogglePause sets isPaused to the opposite of its current value
-    public void TogglePause() {
-        Pause(!isPaused);
+    public bool IsPaused() {
+        return isPaused;
     }
 
-    // Pause sets isPaused value explicitly 
+    // Pause or unpause the game
     public void Pause(bool b) {
         isPaused = b;
         Time.timeScale = isPaused ? 0f : 1f;
@@ -127,8 +127,5 @@ public class CombatManager : MonoBehaviour {
         }
     }
 
-    // IsPaused 
-    public bool IsPaused() {
-        return isPaused;
-    }
+
 }
