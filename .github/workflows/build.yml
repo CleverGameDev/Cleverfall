@@ -1,7 +1,8 @@
 name: Build
 
 on:
-  push: { branches: [master, itchio-autopublish] }
+  pull_request: {} # TODO: temp
+  push: { branches: [master] }
 
 env:
   UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
