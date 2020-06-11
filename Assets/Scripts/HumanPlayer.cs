@@ -144,7 +144,7 @@ public class HumanPlayer : MonoBehaviour {
     }
 
     private void OnMenu() {
-        combatManager.TogglePause();
+        combatManager.Pause(!combatManager.IsPaused());
     }
 
     //////////////////
