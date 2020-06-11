@@ -43,6 +43,7 @@ public class CombatManager : MonoBehaviour {
         Debug.Log("CombatManager:startCombat()");
         combatIsOver = false;
         combatGUI.Show();
+        Pause(false);
 
         // One end condition is a timer, and the player with the most kills wins
         StartCoroutine(startCountdown(roundLength));
