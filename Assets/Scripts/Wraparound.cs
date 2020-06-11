@@ -14,7 +14,7 @@ public class Wraparound : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D other) {
         // If a player enters, do wraparound movement
-        if (other.tag == "Player") {
+        if (other.tag == "Player" || other.tag == "Projectile") {
             ColliderDistance2D colliderDistance = other.Distance(cc);
             Vector3 p = other.transform.position;
 
