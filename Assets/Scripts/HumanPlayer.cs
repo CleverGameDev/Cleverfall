@@ -139,8 +139,26 @@ public class HumanPlayer : MonoBehaviour {
         playerAvatar.GetComponent<PlayerAvatar>()._onJump();
     }
 
-    private void OnAttack() {
-        playerAvatar.GetComponent<PlayerAvatar>()._onFire();
+    private void OnAttack(InputValue value) {
+        playerAvatar.GetComponent<PlayerAvatar>()._onFire(value);
+    }
+
+    private void OnPreviousWeapon() {
+        if (playerAvatar == null) {
+            // player is dead
+            return;
+        }
+
+        playerAvatar.GetComponent<PlayerAvatar>()._onPreviousWeapon();
+    }
+
+    private void OnNextWeapon() {
+        if (playerAvatar == null) {
+            // player is dead
+            return;
+        }
+
+        playerAvatar.GetComponent<PlayerAvatar>()._onNextWeapon();
     }
 
     private void OnMenu() {

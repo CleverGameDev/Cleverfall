@@ -30,7 +30,7 @@ public class PlayerAvatar : MonoBehaviour {
     private float m_xChange;
     private float m_yChange;
     private bool m_isJumping;
-    private Vector2 m_lastDirection;
+    private int m_weaponIndex;
 
     public float fireDelay = 0.5F;
     private bool canFire = true;
@@ -56,6 +56,7 @@ public class PlayerAvatar : MonoBehaviour {
         this.boxCollider = this.GetComponent<BoxCollider2D>();
         this.grounded = false;
         this.hitpoints = 3;
+        this.m_weaponIndex = 0;
 
         spawns = GameObject.FindGameObjectsWithTag("Respawn");
         int index = Random.Range(0, spawns.Length);
@@ -171,9 +172,6 @@ public class PlayerAvatar : MonoBehaviour {
     public void _onMove(InputValue value) {
         this.m_xChange = value.Get<Vector2>().x;
         this.m_yChange = value.Get<Vector2>().y;
-        if (!value.Get<Vector2>().Equals(Vector2.zero)) {
-            this.m_lastDirection = value.Get<Vector2>();
-        }
     }
 
     public void _onJump() {
@@ -183,15 +181,29 @@ public class PlayerAvatar : MonoBehaviour {
         }
     }
 
-    public void _onFire() {
+    public void _onFire(InputValue value) {
         Vector3 projectilePos = transform.position;
         if (canFire) {
             // Don't spawn right on top of player
-            projectilePos += new Vector3(this.m_lastDirection.x, this.m_lastDirection.y, 0.0f);
-            projectile = Instantiate(projectilePrefabs[Random.Range(0, projectilePrefabs.Length)], projectilePos, Quaternion.identity) as GameObject;
-            projectile.GetComponent<Projectile>().SetDirection(this.m_lastDirection);
+            projectilePos += new Vector3(value.Get<Vector2>().x, value.Get<Vector2>().y, 0.0f);
+            projectile = Instantiate(projectilePrefabs[this.m_weaponIndex], projectilePos, Quaternion.identity) as GameObject;
+            projectile.GetComponent<Projectile>().SetDirection(value.Get<Vector2>());
             projectile.GetComponent<Projectile>().SetOwner(this.GetComponent<PlayerAvatar>());
             StartCoroutine(waitForFireCooldown());
+        }
+    }
+
+    public void _onPreviousWeapon() {
+        this.m_weaponIndex--;
+        if (this.m_weaponIndex < 0) {
+            this.m_weaponIndex = projectilePrefabs.Length - 1;
+        }
+    }
+
+    public void _onNextWeapon() {
+        this.m_weaponIndex++;
+        if (this.m_weaponIndex > projectilePrefabs.Length - 1) {
+            this.m_weaponIndex = 0;
         }
     }
 
