@@ -135,4 +135,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   damage: 4
-  duration: 360
+  duration: 1

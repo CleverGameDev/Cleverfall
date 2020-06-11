@@ -2,32 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class Projectile : MonoBehaviour {
 	public float speed;
 	public int damage;
-	public int duration;
+	public float duration;
 
 	private Rigidbody2D rb;
 	private PlayerAvatar owner;
-	private int remainingDuration;
 
-
-	void Start() {
+	void Awake() {
 		this.rb = this.GetComponent<Rigidbody2D>();
-		this.remainingDuration = duration;
-	}
-
-	void Update() {
-		if (this.remainingDuration <= 0) {
-			Destroy(gameObject);
-		}
-		this.remainingDuration--;
+		StartCoroutine(scheduleForDestruction()); 
 	}
 
 	public void SetDirection(Vector2 direction) {
-		if (!rb) {
-			this.rb = this.GetComponent<Rigidbody2D>();
-		}
 		this.rb.velocity = direction * this.speed;
 	}
 
@@ -45,6 +34,11 @@ public class Projectile : MonoBehaviour {
 
             player.TakeDamage(damage, this.gameObject);
         }
+        Destroy(gameObject);
+    }
+
+    private IEnumerator scheduleForDestruction() {
+        yield return new WaitForSeconds(duration);
         Destroy(gameObject);
     }
 }
