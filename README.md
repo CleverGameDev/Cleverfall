@@ -9,4 +9,4 @@ We have configuration in place to format our C# code on save. If this does not w
 
 ### External Asset Credits
 
-Start Menu music and Enemy Approaching music are both by Toby Fox, from the game Undertale. 
+Start Menu music and Enemy Approaching music are both by Toby Fox, from the game Undertale.
