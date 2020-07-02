@@ -192,10 +192,11 @@ public class PlayerAvatar : MonoBehaviour {
     public void _onFire(InputValue value) {
         Vector3 projectilePos = transform.position;
         if (canFire) {
+            Vector2 direction = value.Get<Vector2>().normalized;
             // Don't spawn right on top of player
-            projectilePos += new Vector3(value.Get<Vector2>().x, value.Get<Vector2>().y, 0.0f);
+            projectilePos += (Vector3)direction;
             projectile = Instantiate(projectilePrefabs[this.m_weaponIndex], projectilePos, Quaternion.identity) as GameObject;
-            projectile.GetComponent<Projectile>().SetDirection(value.Get<Vector2>());
+            projectile.GetComponent<Projectile>().SetDirection(direction);
             projectile.GetComponent<Projectile>().SetOwner(this.GetComponent<PlayerAvatar>());
             StartCoroutine(waitForFireCooldown());
         }
