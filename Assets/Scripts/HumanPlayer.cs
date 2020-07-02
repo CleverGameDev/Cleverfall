@@ -140,6 +140,11 @@ public class HumanPlayer : MonoBehaviour {
     }
 
     private void OnAttack(InputValue value) {
+        if (playerAvatar == null) {
+            // player is dead
+            return;
+        }
+
         playerAvatar.GetComponent<PlayerAvatar>()._onFire(value);
     }
 
