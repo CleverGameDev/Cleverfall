@@ -40,6 +40,10 @@ public class PlayerAvatar : MonoBehaviour {
         respawn();
     }
 
+    public int Hitpoints {
+        get { return hitpoints; }
+    }
+
     // Update is called once per frame
     void Update() {
         if (isDead()) {
@@ -163,6 +167,10 @@ public class PlayerAvatar : MonoBehaviour {
                 TakeDamage(1, other.gameObject);
             }
         }
+    }
+
+    public string GetWeapon() {
+        return projectilePrefabs[m_weaponIndex].name;
     }
 
     //////////////////////

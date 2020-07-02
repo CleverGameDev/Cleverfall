@@ -11,6 +11,9 @@ public class HumanPlayer : MonoBehaviour {
     [SerializeField]
     public GameObject playerAvatarPrefab;
     private GameObject playerAvatar;
+    public GameObject PlayerAvatar {
+        get { return playerAvatar; }
+    }
 
     private CombatManager combatManager;
 

@@ -25,7 +25,7 @@ public class CombatManager : MonoBehaviour {
         Debug.Log("CombatManager:Awake()");
         // Spawn a avatar for each human player
         GameObject[] players = GameObject.FindGameObjectsWithTag("HumanPlayer");
-        humanPlayers = new HumanPlayer[G.Instance.MAX_PLAYERS];
+        humanPlayers = new HumanPlayer[players.Length];
         for (int i = 0; i < players.Length; i++) {
             HumanPlayer hp = players[i].GetComponent<HumanPlayer>();
             humanPlayers[i] = hp;
@@ -42,6 +42,7 @@ public class CombatManager : MonoBehaviour {
     void startCombat() {
         Debug.Log("CombatManager:startCombat()");
         combatIsOver = false;
+        combatGUI.Initialize(humanPlayers);
         combatGUI.Show();
         Pause(false);
 

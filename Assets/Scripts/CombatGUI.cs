@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class CombatGUI : MonoBehaviour {
     public TextMeshProUGUI countdownText;
-    public GameObject panel;
+    public GameObject topPanel;
+    public GameObject bottomPanel;
+    public PlayerStatus playerStatusPrefab;
+    private PlayerStatus[] statuses;
 
     // Start is called before the first frame update
     void Start() {
@@ -18,11 +21,13 @@ public class CombatGUI : MonoBehaviour {
     }
 
     public void Show() {
-        panel.SetActive(true);
+        topPanel.SetActive(true);
+        bottomPanel.SetActive(true);
     }
 
     public void Hide() {
-        panel.SetActive(false);
+        topPanel.SetActive(false);
+        bottomPanel.SetActive(false);
     }
 
     public void SetTimeRemaining(float timeRemaining) {
@@ -31,4 +36,12 @@ public class CombatGUI : MonoBehaviour {
         countdownText.SetText(time.ToString(@"m\:ss"));
     }
 
+    public void Initialize(HumanPlayer[] hps) {
+        statuses = new PlayerStatus[hps.Length];
+        for (int i = 0; i < hps.Length; i++) {
+            PlayerStatus ps = Instantiate(playerStatusPrefab, bottomPanel.gameObject.transform);
+            ps.HumanPlayer = hps[i];
+            statuses[i] = ps;
+        }
+    }
 }
